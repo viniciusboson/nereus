@@ -1,0 +1,26 @@
+{
+    "nereusApp": {
+        "wallet" : {
+            "home": {
+                "title": "Wallets",
+                "createLabel": "Create a new Wallet",
+                "createOrEditLabel": "Create or edit a Wallet"
+            },
+            "created": "A new Wallet is created with identifier {{ param }}",
+            "updated": "A Wallet is updated with identifier {{ param }}",
+            "deleted": "A Wallet is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Wallet {{ id }}?"
+            },
+            "detail": {
+                "title": "Wallet"
+            },
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "description": "Description",
+            "account": "Account",
+            "assets": "Assets",
+            "institutions": "Institutions"
+        }
+    }
+}

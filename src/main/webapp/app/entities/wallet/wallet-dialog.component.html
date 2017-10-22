@@ -1,0 +1,63 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myWalletLabel" jhiTranslate="nereusApp.wallet.home.createOrEditLabel">Create or edit a Wallet</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!wallet.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="wallet.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="nereusApp.wallet.createdAt" for="field_createdAt">Created At</label>
+            <div class="d-flex">
+                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="wallet.createdAt"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="nereusApp.wallet.updatedAt" for="field_updatedAt">Updated At</label>
+            <div class="d-flex">
+                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="wallet.updatedAt"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="nereusApp.wallet.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="wallet.description"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="nereusApp.wallet.account" for="field_account">Account</label>
+            <select class="form-control" id="field_account" name="account" [(ngModel)]="wallet.accountId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="accountsOption.id" *ngFor="let accountsOption of accounts; trackBy: trackAccountsById">{{accountsOption.description}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="nereusApp.wallet.assets" for="field_assets">Assets</label>
+            <select class="form-control" id="field_assets" multiple name="assets" [(ngModel)]="wallet.assets">
+                <option [ngValue]="getSelected(wallet.assets, assetOption)" *ngFor="let assetOption of assets; trackBy: trackAssetById">{{assetOption.code}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="nereusApp.wallet.institutions" for="field_institutions">Institutions</label>
+            <select class="form-control" id="field_institutions" multiple name="institutions" [(ngModel)]="wallet.institutions">
+                <option [ngValue]="getSelected(wallet.institutions, institutionOption)" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

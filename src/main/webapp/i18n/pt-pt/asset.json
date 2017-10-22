@@ -1,0 +1,26 @@
+{
+    "nereusApp": {
+        "asset" : {
+            "home": {
+                "title": "Assets",
+                "createLabel": "Criar um(a) novo(a) Asset",
+                "createOrEditLabel": "Criar ou editar um(a) Asset"
+            },
+            "created": "A new Asset is created with identifier {{ param }}",
+            "updated": "A Asset is updated with identifier {{ param }}",
+            "deleted": "A Asset is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Tem a certeza que pretende eliminar o(a) Asset {{ id }}?"
+            },
+            "detail": {
+                "title": "Asset"
+            },
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "description": "Description",
+            "code": "Code",
+            "symbol": "Symbol",
+            "type": "Type"
+        }
+    }
+}

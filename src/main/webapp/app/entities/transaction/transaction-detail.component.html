@@ -1,0 +1,57 @@
+
+<div *ngIf="transaction">
+    <h2><span jhiTranslate="nereusApp.transaction.detail.title">Transaction</span> {{transaction.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="nereusApp.transaction.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{transaction.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.transaction.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{transaction.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.transaction.description">Description</span></dt>
+        <dd>
+            <span>{{transaction.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.transaction.amount">Amount</span></dt>
+        <dd>
+            <span>{{transaction.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.transaction.type">Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'nereusApp.TransactionType.' + transaction.type}}">{{transaction.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.transaction.balance">Balance</span></dt>
+        <dd>
+            <span>{{transaction.balance}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.transaction.operation">Operation</span></dt>
+        <dd>
+            <div *ngIf="transaction.operationId">
+                <a [routerLink]="['/operation', transaction.operationId]">{{transaction.operationId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.transaction.asset">Asset</span></dt>
+        <dd>
+            <div *ngIf="transaction.assetId">
+                <a [routerLink]="['/asset', transaction.assetId]">{{transaction.assetCode}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'transaction/'+ transaction.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

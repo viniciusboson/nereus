@@ -1,0 +1,9 @@
+{
+    "nereusApp": {
+        "ChargeType" : {
+            "null": "",
+            "FLAT_FEE": "FLAT_FEE",
+            "PERCENTAGE": "PERCENTAGE"
+        }
+    }
+}

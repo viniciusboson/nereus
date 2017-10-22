@@ -1,0 +1,73 @@
+
+<div *ngIf="operation">
+    <h2><span jhiTranslate="nereusApp.operation.detail.title">Operation</span> {{operation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="nereusApp.operation.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{operation.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.operation.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{operation.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.operation.fromAmount">From Amount</span></dt>
+        <dd>
+            <span>{{operation.fromAmount}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.operation.toAmount">To Amount</span></dt>
+        <dd>
+            <span>{{operation.toAmount}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.operation.fromWallet">From Wallet</span></dt>
+        <dd>
+            <div *ngIf="operation.fromWalletId">
+                <a [routerLink]="['/wallet', operation.fromWalletId]">{{operation.fromWalletDescription}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.operation.fromInstitution">From Institution</span></dt>
+        <dd>
+            <div *ngIf="operation.fromInstitutionId">
+                <a [routerLink]="['/institution', operation.fromInstitutionId]">{{operation.fromInstitutionDescription}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.operation.fromAsset">From Asset</span></dt>
+        <dd>
+            <div *ngIf="operation.fromAssetId">
+                <a [routerLink]="['/asset', operation.fromAssetId]">{{operation.fromAssetCode}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.operation.toWallet">To Wallet</span></dt>
+        <dd>
+            <div *ngIf="operation.toWalletId">
+                <a [routerLink]="['/wallet', operation.toWalletId]">{{operation.toWalletDescription}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.operation.toAsset">To Asset</span></dt>
+        <dd>
+            <div *ngIf="operation.toAssetId">
+                <a [routerLink]="['/asset', operation.toAssetId]">{{operation.toAssetCode}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.operation.toInstitution">To Institution</span></dt>
+        <dd>
+            <div *ngIf="operation.toInstitutionId">
+                <a [routerLink]="['/institution', operation.toInstitutionId]">{{operation.toInstitutionDescription}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'operation/'+ operation.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

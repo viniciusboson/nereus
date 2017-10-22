@@ -1,0 +1,12 @@
+{
+    "nereusApp": {
+        "OperationType" : {
+            "null": "",
+            "WIRE_TRANSFER": "WIRE_TRANSFER",
+            "WITHDRAW": "WITHDRAW",
+            "DEPOSIT": "DEPOSIT",
+            "BUY": "BUY",
+            "SELL": "SELL"
+        }
+    }
+}

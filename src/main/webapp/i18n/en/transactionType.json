@@ -1,0 +1,9 @@
+{
+    "nereusApp": {
+        "TransactionType" : {
+            "null": "",
+            "DEBIT": "DEBIT",
+            "CREDIT": "CREDIT"
+        }
+    }
+}

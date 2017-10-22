@@ -1,0 +1,33 @@
+
+<div *ngIf="accounts">
+    <h2><span jhiTranslate="nereusApp.accounts.detail.title">Accounts</span> {{accounts.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="nereusApp.accounts.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{accounts.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.accounts.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{accounts.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.accounts.description">Description</span></dt>
+        <dd>
+            <span>{{accounts.description}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'accounts/'+ accounts.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

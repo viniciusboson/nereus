@@ -1,0 +1,45 @@
+
+<div *ngIf="asset">
+    <h2><span jhiTranslate="nereusApp.asset.detail.title">Asset</span> {{asset.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="nereusApp.asset.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{asset.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.asset.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{asset.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.asset.description">Description</span></dt>
+        <dd>
+            <span>{{asset.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.asset.code">Code</span></dt>
+        <dd>
+            <span>{{asset.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.asset.symbol">Symbol</span></dt>
+        <dd>
+            <span>{{asset.symbol}}</span>
+        </dd>
+        <dt><span jhiTranslate="nereusApp.asset.type">Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'nereusApp.AssetType.' + asset.type}}">{{asset.type}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'asset/'+ asset.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
