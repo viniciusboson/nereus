@@ -7,7 +7,7 @@ export const enum PositionType {
 }
 
 export const enum PositionStatus {
-    'OPENED',
+    'OPEN',
     'CLOSED'
 }
 

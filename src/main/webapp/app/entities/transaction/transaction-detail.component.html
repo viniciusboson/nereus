@@ -38,10 +38,10 @@
                 <a [routerLink]="['/operation', transaction.operationId]">{{transaction.operationId}}</a>
             </div>
         </dd>
-        <dt><span>Asset</span></dt>
+        <dt><span>Position</span></dt>
         <dd>
-            <div *ngIf="transaction.assetId">
-                <a [routerLink]="['/asset', transaction.assetId]">{{transaction.assetCode}}</a>
+            <div *ngIf="transaction.positionId">
+                <a [routerLink]="['/position', transaction.positionId]">{{transaction.positionDescription}}</a>
             </div>
         </dd>
     </dl>

@@ -6,12 +6,12 @@ export class Operation implements BaseEntity {
         public createdAt?: any,
         public updatedAt?: any,
         public executedAt?: any,
-        public fromAmount?: number,
-        public toAmount?: number,
-        public fromPositionId?: number,
-        public fromInstitutionId?: number,
-        public toPositionId?: number,
-        public toInstitutionId?: number,
+        public amountFrom?: number,
+        public amountTo?: number,
+        public positionFromId?: number,
+        public institutionFromId?: number,
+        public positionToId?: number,
+        public institutionToId?: number,
     ) {
     }
 }

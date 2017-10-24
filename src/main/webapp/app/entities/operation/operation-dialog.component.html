@@ -64,60 +64,60 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_fromAmount">From Amount</label>
-            <input type="number" class="form-control" name="fromAmount" id="field_fromAmount"
-                [(ngModel)]="operation.fromAmount" required />
-            <div [hidden]="!(editForm.controls.fromAmount?.dirty && editForm.controls.fromAmount?.invalid)">
+            <label class="form-control-label" for="field_amountFrom">Amount From</label>
+            <input type="number" class="form-control" name="amountFrom" id="field_amountFrom"
+                [(ngModel)]="operation.amountFrom" required />
+            <div [hidden]="!(editForm.controls.amountFrom?.dirty && editForm.controls.amountFrom?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.fromAmount?.errors?.required">
+                   [hidden]="!editForm.controls.amountFrom?.errors?.required">
                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.fromAmount?.errors?.number">
+                    [hidden]="!editForm.controls.amountFrom?.errors?.number">
                     This field should be a number.
                 </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_toAmount">To Amount</label>
-            <input type="number" class="form-control" name="toAmount" id="field_toAmount"
-                [(ngModel)]="operation.toAmount" required />
-            <div [hidden]="!(editForm.controls.toAmount?.dirty && editForm.controls.toAmount?.invalid)">
+            <label class="form-control-label" for="field_amountTo">Amount To</label>
+            <input type="number" class="form-control" name="amountTo" id="field_amountTo"
+                [(ngModel)]="operation.amountTo" required />
+            <div [hidden]="!(editForm.controls.amountTo?.dirty && editForm.controls.amountTo?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.toAmount?.errors?.required">
+                   [hidden]="!editForm.controls.amountTo?.errors?.required">
                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.toAmount?.errors?.number">
+                    [hidden]="!editForm.controls.amountTo?.errors?.number">
                     This field should be a number.
                 </small>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" for="field_fromPosition">From Position</label>
-            <select class="form-control" id="field_fromPosition" name="fromPosition" [(ngModel)]="operation.fromPositionId" >
+            <label class="form-control-label" for="field_positionFrom">Position From</label>
+            <select class="form-control" id="field_positionFrom" name="positionFrom" [(ngModel)]="operation.positionFromId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_fromInstitution">From Institution</label>
-            <select class="form-control" id="field_fromInstitution" name="fromInstitution" [(ngModel)]="operation.fromInstitutionId" >
+            <label class="form-control-label" for="field_institutionFrom">Institution From</label>
+            <select class="form-control" id="field_institutionFrom" name="institutionFrom" [(ngModel)]="operation.institutionFromId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="institutionOption.id" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_toPosition">To Position</label>
-            <select class="form-control" id="field_toPosition" name="toPosition" [(ngModel)]="operation.toPositionId" >
+            <label class="form-control-label" for="field_positionTo">Position To</label>
+            <select class="form-control" id="field_positionTo" name="positionTo" [(ngModel)]="operation.positionToId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_toInstitution">To Institution</label>
-            <select class="form-control" id="field_toInstitution" name="toInstitution" [(ngModel)]="operation.toInstitutionId" >
+            <label class="form-control-label" for="field_institutionTo">Institution To</label>
+            <select class="form-control" id="field_institutionTo" name="institutionTo" [(ngModel)]="operation.institutionToId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="institutionOption.id" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
             </select>

@@ -21,7 +21,7 @@
     "buildTool": "gradle",
     "enableSocialSignIn": false,
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "5cd3721a5208e0f180541bd95882b1fb75c1f5a0",
+    "jwtSecretKey": "6667005088e7fbf7420bf79688278b1e801ba56e",
     "clientFramework": "angularX",
     "useSass": false,
     "clientPackageManager": "yarn",

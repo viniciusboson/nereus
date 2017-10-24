@@ -16,7 +16,7 @@ export class Transaction implements BaseEntity {
         public type?: TransactionType,
         public balance?: number,
         public operationId?: number,
-        public assetId?: number,
+        public positionId?: number,
     ) {
     }
 }

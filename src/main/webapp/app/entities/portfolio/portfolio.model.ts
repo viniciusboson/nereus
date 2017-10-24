@@ -5,6 +5,7 @@ export class Portfolio implements BaseEntity {
         public id?: number,
         public createdAt?: any,
         public updatedAt?: any,
+        public modifiedBy?: string,
         public description?: string,
         public accounts?: BaseEntity[],
     ) {

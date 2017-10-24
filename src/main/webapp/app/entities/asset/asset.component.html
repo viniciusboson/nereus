@@ -19,6 +19,7 @@
             <th><span>ID</span></th>
             <th><span>Created At</span></th>
             <th><span>Updated At</span></th>
+            <th><span>Modified By</span></th>
             <th><span>Description</span></th>
             <th><span>Code</span></th>
             <th><span>Symbol</span></th>
@@ -31,6 +32,7 @@
                 <td><a [routerLink]="['../asset', asset.id ]">{{asset.id}}</a></td>
                 <td>{{asset.createdAt | date:'medium'}}</td>
                 <td>{{asset.updatedAt | date:'medium'}}</td>
+                <td>{{asset.modifiedBy}}</td>
                 <td>{{asset.description}}</td>
                 <td>{{asset.code}}</td>
                 <td>{{asset.symbol}}</td>

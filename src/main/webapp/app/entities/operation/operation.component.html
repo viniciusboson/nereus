@@ -20,12 +20,12 @@
             <th><span>Created At</span></th>
             <th><span>Updated At</span></th>
             <th><span>Executed At</span></th>
-            <th><span>From Amount</span></th>
-            <th><span>To Amount</span></th>
-            <th><span>From Position</span></th>
-            <th><span>From Institution</span></th>
-            <th><span>To Position</span></th>
-            <th><span>To Institution</span></th>
+            <th><span>Amount From</span></th>
+            <th><span>Amount To</span></th>
+            <th><span>Position From</span></th>
+            <th><span>Institution From</span></th>
+            <th><span>Position To</span></th>
+            <th><span>Institution To</span></th>
             <th></th>
             </tr>
             </thead>
@@ -35,26 +35,26 @@
                 <td>{{operation.createdAt | date:'medium'}}</td>
                 <td>{{operation.updatedAt | date:'medium'}}</td>
                 <td>{{operation.executedAt | date:'medium'}}</td>
-                <td>{{operation.fromAmount}}</td>
-                <td>{{operation.toAmount}}</td>
+                <td>{{operation.amountFrom}}</td>
+                <td>{{operation.amountTo}}</td>
                 <td>
-                    <div *ngIf="operation.fromPositionId">
-                        <a [routerLink]="['../position', operation.fromPositionId  ]" >{{operation.fromPositionDescription}}</a>
+                    <div *ngIf="operation.positionFromId">
+                        <a [routerLink]="['../position', operation.positionFromId  ]" >{{operation.positionFromDescription}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="operation.fromInstitutionId">
-                        <a [routerLink]="['../institution', operation.fromInstitutionId  ]" >{{operation.fromInstitutionDescription}}</a>
+                    <div *ngIf="operation.institutionFromId">
+                        <a [routerLink]="['../institution', operation.institutionFromId  ]" >{{operation.institutionFromDescription}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="operation.toPositionId">
-                        <a [routerLink]="['../position', operation.toPositionId  ]" >{{operation.toPositionDescription}}</a>
+                    <div *ngIf="operation.positionToId">
+                        <a [routerLink]="['../position', operation.positionToId  ]" >{{operation.positionToDescription}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="operation.toInstitutionId">
-                        <a [routerLink]="['../institution', operation.toInstitutionId  ]" >{{operation.toInstitutionDescription}}</a>
+                    <div *ngIf="operation.institutionToId">
+                        <a [routerLink]="['../institution', operation.institutionToId  ]" >{{operation.institutionToDescription}}</a>
                     </div>
                 </td>
                 <td class="text-right">

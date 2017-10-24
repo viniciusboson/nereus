@@ -126,10 +126,10 @@
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_asset">Asset</label>
-            <select class="form-control" id="field_asset" name="asset" [(ngModel)]="transaction.assetId" >
+            <label class="form-control-label" for="field_position">Position</label>
+            <select class="form-control" id="field_position" name="position" [(ngModel)]="transaction.positionId" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="assetOption.id" *ngFor="let assetOption of assets; trackBy: trackAssetById">{{assetOption.code}}</option>
+                <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
             </select>
         </div>
     </div>

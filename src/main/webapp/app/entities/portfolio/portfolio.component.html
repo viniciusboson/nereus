@@ -19,6 +19,7 @@
             <th><span>ID</span></th>
             <th><span>Created At</span></th>
             <th><span>Updated At</span></th>
+            <th><span>Modified By</span></th>
             <th><span>Description</span></th>
             <th></th>
             </tr>
@@ -28,6 +29,7 @@
                 <td><a [routerLink]="['../portfolio', portfolio.id ]">{{portfolio.id}}</a></td>
                 <td>{{portfolio.createdAt | date:'medium'}}</td>
                 <td>{{portfolio.updatedAt | date:'medium'}}</td>
+                <td>{{portfolio.modifiedBy}}</td>
                 <td>{{portfolio.description}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

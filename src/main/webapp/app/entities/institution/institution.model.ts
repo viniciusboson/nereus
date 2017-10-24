@@ -5,6 +5,7 @@ export class Institution implements BaseEntity {
         public id?: number,
         public createdAt?: any,
         public updatedAt?: any,
+        public modifiedBy?: string,
         public description?: string,
     ) {
     }

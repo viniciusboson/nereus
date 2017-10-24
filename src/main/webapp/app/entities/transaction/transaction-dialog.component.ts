@@ -10,7 +10,7 @@ import { Transaction } from './transaction.model';
 import { TransactionPopupService } from './transaction-popup.service';
 import { TransactionService } from './transaction.service';
 import { Operation, OperationService } from '../operation';
-import { Asset, AssetService } from '../asset';
+import { Position, PositionService } from '../position';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -24,14 +24,14 @@ export class TransactionDialogComponent implements OnInit {
 
     operations: Operation[];
 
-    assets: Asset[];
+    positions: Position[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private transactionService: TransactionService,
         private operationService: OperationService,
-        private assetService: AssetService,
+        private positionService: PositionService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -40,8 +40,8 @@ export class TransactionDialogComponent implements OnInit {
         this.isSaving = false;
         this.operationService.query()
             .subscribe((res: ResponseWrapper) => { this.operations = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.assetService.query()
-            .subscribe((res: ResponseWrapper) => { this.assets = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.positionService.query()
+            .subscribe((res: ResponseWrapper) => { this.positions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -82,7 +82,7 @@ export class TransactionDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackAssetById(index: number, item: Asset) {
+    trackPositionById(index: number, item: Position) {
         return item.id;
     }
 }

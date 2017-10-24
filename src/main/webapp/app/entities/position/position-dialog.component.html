@@ -89,7 +89,7 @@
         <div class="form-group">
             <label class="form-control-label" for="field_status">Status</label>
             <select class="form-control" name="status" [(ngModel)]="position.status" id="field_status"  required>
-                <option value="OPENED">OPENED</option>
+                <option value="OPEN">OPEN</option>
                 <option value="CLOSED">CLOSED</option>
             </select>
             <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">

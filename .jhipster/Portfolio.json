@@ -24,6 +24,13 @@
             ]
         },
         {
+            "fieldName": "modifiedBy",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
             "fieldName": "description",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -31,11 +38,11 @@
             ]
         }
     ],
-    "changelogDate": "20171024010819",
+    "changelogDate": "20171024173018",
     "entityTableName": "portfolio",
     "dto": "mapstruct",
     "pagination": "no",
-    "service": "serviceClass",
+    "service": "serviceImpl",
     "jpaMetamodelFiltering": false,
     "microserviceName": "doris"
 }
