@@ -9,29 +9,62 @@
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "wallet",
-            "otherEntityName": "wallet",
+            "relationshipName": "account",
+            "otherEntityName": "accounts",
             "otherEntityField": "description"
         }
     ],
     "fields": [
         {
             "fieldName": "createdAt",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "updatedAt",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "balance",
-            "fieldType": "Double"
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "PositionType",
+            "fieldValues": "LONG,SHORT,FLAT",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "PositionStatus",
+            "fieldValues": "OPENED,CLOSED",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
-    "changelogDate": "20171022135231",
+    "changelogDate": "20171024010821",
     "entityTableName": "position",
     "dto": "mapstruct",
     "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "doris"
 }

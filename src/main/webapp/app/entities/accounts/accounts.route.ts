@@ -15,7 +15,7 @@ export const accountsRoute: Routes = [
         component: AccountsComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.accounts.home.title'
+            pageTitle: 'Accounts'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -23,7 +23,7 @@ export const accountsRoute: Routes = [
         component: AccountsDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.accounts.home.title'
+            pageTitle: 'Accounts'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -35,7 +35,7 @@ export const accountsPopupRoute: Routes = [
         component: AccountsPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.accounts.home.title'
+            pageTitle: 'Accounts'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -45,7 +45,7 @@ export const accountsPopupRoute: Routes = [
         component: AccountsPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.accounts.home.title'
+            pageTitle: 'Accounts'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -55,7 +55,7 @@ export const accountsPopupRoute: Routes = [
         component: AccountsDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.accounts.home.title'
+            pageTitle: 'Accounts'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

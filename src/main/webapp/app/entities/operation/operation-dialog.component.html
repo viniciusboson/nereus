@@ -1,79 +1,122 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myOperationLabel" jhiTranslate="nereusApp.operation.home.createOrEditLabel">Create or edit a Operation</h4>
+        <h4 class="modal-title" id="myOperationLabel">Create or edit a Operation</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group" [hidden]="!operation.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="operation.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.operation.createdAt" for="field_createdAt">Created At</label>
+            <label class="form-control-label" for="field_createdAt">Created At</label>
             <div class="d-flex">
                 <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="operation.createdAt"
-                  />
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.createdAt?.dirty && editForm.controls.createdAt?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.createdAt?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.createdAt?.errors?.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.operation.updatedAt" for="field_updatedAt">Updated At</label>
+            <label class="form-control-label" for="field_updatedAt">Updated At</label>
             <div class="d-flex">
                 <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="operation.updatedAt"
-                  />
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.updatedAt?.dirty && editForm.controls.updatedAt?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.updatedAt?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.updatedAt?.errors?.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.operation.fromAmount" for="field_fromAmount">From Amount</label>
-            <input type="number" class="form-control" name="fromAmount" id="field_fromAmount"
-                [(ngModel)]="operation.fromAmount"  />
+            <label class="form-control-label" for="field_executedAt">Executed At</label>
+            <div class="d-flex">
+                <input id="field_executedAt" type="datetime-local" class="form-control" name="executedAt" [(ngModel)]="operation.executedAt"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.executedAt?.dirty && editForm.controls.executedAt?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.executedAt?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.executedAt?.errors?.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.operation.toAmount" for="field_toAmount">To Amount</label>
+            <label class="form-control-label" for="field_fromAmount">From Amount</label>
+            <input type="number" class="form-control" name="fromAmount" id="field_fromAmount"
+                [(ngModel)]="operation.fromAmount" required />
+            <div [hidden]="!(editForm.controls.fromAmount?.dirty && editForm.controls.fromAmount?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.fromAmount?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.fromAmount?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_toAmount">To Amount</label>
             <input type="number" class="form-control" name="toAmount" id="field_toAmount"
-                [(ngModel)]="operation.toAmount"  />
+                [(ngModel)]="operation.toAmount" required />
+            <div [hidden]="!(editForm.controls.toAmount?.dirty && editForm.controls.toAmount?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.toAmount?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.toAmount?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.operation.fromWallet" for="field_fromWallet">From Wallet</label>
-            <select class="form-control" id="field_fromWallet" name="fromWallet" [(ngModel)]="operation.fromWalletId" >
+            <label class="form-control-label" for="field_fromPosition">From Position</label>
+            <select class="form-control" id="field_fromPosition" name="fromPosition" [(ngModel)]="operation.fromPositionId" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="walletOption.id" *ngFor="let walletOption of wallets; trackBy: trackWalletById">{{walletOption.description}}</option>
+                <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.operation.fromInstitution" for="field_fromInstitution">From Institution</label>
+            <label class="form-control-label" for="field_fromInstitution">From Institution</label>
             <select class="form-control" id="field_fromInstitution" name="fromInstitution" [(ngModel)]="operation.fromInstitutionId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="institutionOption.id" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.operation.fromAsset" for="field_fromAsset">From Asset</label>
-            <select class="form-control" id="field_fromAsset" name="fromAsset" [(ngModel)]="operation.fromAssetId" >
+            <label class="form-control-label" for="field_toPosition">To Position</label>
+            <select class="form-control" id="field_toPosition" name="toPosition" [(ngModel)]="operation.toPositionId" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="assetOption.id" *ngFor="let assetOption of assets; trackBy: trackAssetById">{{assetOption.code}}</option>
+                <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.operation.toWallet" for="field_toWallet">To Wallet</label>
-            <select class="form-control" id="field_toWallet" name="toWallet" [(ngModel)]="operation.toWalletId" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="walletOption.id" *ngFor="let walletOption of wallets; trackBy: trackWalletById">{{walletOption.description}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.operation.toAsset" for="field_toAsset">To Asset</label>
-            <select class="form-control" id="field_toAsset" name="toAsset" [(ngModel)]="operation.toAssetId" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="assetOption.id" *ngFor="let assetOption of assets; trackBy: trackAssetById">{{assetOption.code}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.operation.toInstitution" for="field_toInstitution">To Institution</label>
+            <label class="form-control-label" for="field_toInstitution">To Institution</label>
             <select class="form-control" id="field_toInstitution" name="toInstitution" [(ngModel)]="operation.toInstitutionId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="institutionOption.id" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
@@ -82,10 +125,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
         </button>
         <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
         </button>
     </div>
 </form>

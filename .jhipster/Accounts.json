@@ -2,30 +2,56 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "relationshipName": "wallet",
-            "otherEntityName": "wallet",
-            "otherEntityRelationshipName": "account"
+            "relationshipType": "many-to-one",
+            "relationshipName": "portfolio",
+            "otherEntityName": "portfolio",
+            "otherEntityField": "description"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "assets",
+            "otherEntityName": "asset",
+            "otherEntityField": "code",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "institutions",
+            "otherEntityName": "institution",
+            "otherEntityField": "description",
+            "ownerSide": true
         }
     ],
     "fields": [
         {
             "fieldName": "createdAt",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "updatedAt",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "description",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
-    "changelogDate": "20171022135224",
+    "changelogDate": "20171024010820",
     "entityTableName": "accounts",
     "dto": "mapstruct",
     "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "doris"
 }

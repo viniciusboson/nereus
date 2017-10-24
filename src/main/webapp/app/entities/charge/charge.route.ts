@@ -15,7 +15,7 @@ export const chargeRoute: Routes = [
         component: ChargeComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.charge.home.title'
+            pageTitle: 'Charges'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -23,7 +23,7 @@ export const chargeRoute: Routes = [
         component: ChargeDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.charge.home.title'
+            pageTitle: 'Charges'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -35,7 +35,7 @@ export const chargePopupRoute: Routes = [
         component: ChargePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.charge.home.title'
+            pageTitle: 'Charges'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -45,7 +45,7 @@ export const chargePopupRoute: Routes = [
         component: ChargePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.charge.home.title'
+            pageTitle: 'Charges'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -55,7 +55,7 @@ export const chargePopupRoute: Routes = [
         component: ChargeDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.charge.home.title'
+            pageTitle: 'Charges'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

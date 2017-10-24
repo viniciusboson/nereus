@@ -32,6 +32,8 @@ export class TransactionPopupService {
                         .transform(transaction.createdAt, 'yyyy-MM-ddTHH:mm:ss');
                     transaction.updatedAt = this.datePipe
                         .transform(transaction.updatedAt, 'yyyy-MM-ddTHH:mm:ss');
+                    transaction.executedAt = this.datePipe
+                        .transform(transaction.executedAt, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.transactionModalRef(component, transaction);
                     resolve(this.ngbModalRef);
                 });

@@ -5,13 +5,12 @@ export class Operation implements BaseEntity {
         public id?: number,
         public createdAt?: any,
         public updatedAt?: any,
+        public executedAt?: any,
         public fromAmount?: number,
         public toAmount?: number,
-        public fromWalletId?: number,
+        public fromPositionId?: number,
         public fromInstitutionId?: number,
-        public fromAssetId?: number,
-        public toWalletId?: number,
-        public toAssetId?: number,
+        public toPositionId?: number,
         public toInstitutionId?: number,
     ) {
     }

@@ -1,58 +1,126 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myPositionLabel" jhiTranslate="nereusApp.position.home.createOrEditLabel">Create or edit a Position</h4>
+        <h4 class="modal-title" id="myPositionLabel">Create or edit a Position</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group" [hidden]="!position.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="position.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.position.createdAt" for="field_createdAt">Created At</label>
+            <label class="form-control-label" for="field_createdAt">Created At</label>
             <div class="d-flex">
                 <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="position.createdAt"
-                  />
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.createdAt?.dirty && editForm.controls.createdAt?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.createdAt?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.createdAt?.errors?.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.position.updatedAt" for="field_updatedAt">Updated At</label>
+            <label class="form-control-label" for="field_updatedAt">Updated At</label>
             <div class="d-flex">
                 <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="position.updatedAt"
-                  />
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.updatedAt?.dirty && editForm.controls.updatedAt?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.updatedAt?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.updatedAt?.errors?.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.position.balance" for="field_balance">Balance</label>
+            <label class="form-control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="position.description" required />
+            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.description?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_balance">Balance</label>
             <input type="number" class="form-control" name="balance" id="field_balance"
-                [(ngModel)]="position.balance"  />
+                [(ngModel)]="position.balance" required />
+            <div [hidden]="!(editForm.controls.balance?.dirty && editForm.controls.balance?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.balance?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.balance?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_type">Type</label>
+            <select class="form-control" name="type" [(ngModel)]="position.type" id="field_type"  required>
+                <option value="LONG">LONG</option>
+                <option value="SHORT">SHORT</option>
+                <option value="FLAT">FLAT</option>
+            </select>
+            <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.type?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="position.status" id="field_status"  required>
+                <option value="OPENED">OPENED</option>
+                <option value="CLOSED">CLOSED</option>
+            </select>
+            <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.status?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.position.asset" for="field_asset">Asset</label>
+            <label class="form-control-label" for="field_asset">Asset</label>
             <select class="form-control" id="field_asset" name="asset" [(ngModel)]="position.assetId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="assetOption.id" *ngFor="let assetOption of assets; trackBy: trackAssetById">{{assetOption.code}}</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="nereusApp.position.wallet" for="field_wallet">Wallet</label>
-            <select class="form-control" id="field_wallet" name="wallet" [(ngModel)]="position.walletId" >
+            <label class="form-control-label" for="field_account">Account</label>
+            <select class="form-control" id="field_account" name="account" [(ngModel)]="position.accountId" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="walletOption.id" *ngFor="let walletOption of wallets; trackBy: trackWalletById">{{walletOption.description}}</option>
+                <option [ngValue]="accountsOption.id" *ngFor="let accountsOption of accounts; trackBy: trackAccountsById">{{accountsOption.description}}</option>
             </select>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
         </button>
         <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
         </button>
     </div>
 </form>

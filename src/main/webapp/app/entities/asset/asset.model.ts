@@ -1,11 +1,12 @@
 import { BaseEntity } from './../../shared';
 
 export const enum AssetType {
-    'INDICE',
-    'CURRENCY',
     'COMMODITY',
-    'STOCK',
-    'OPTION'
+    'CURRENCY',
+    'FUTURE',
+    'INDICE',
+    'OPTION',
+    'STOCK'
 }
 
 export class Asset implements BaseEntity {

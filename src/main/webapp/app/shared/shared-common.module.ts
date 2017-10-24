@@ -3,8 +3,6 @@ import { Title } from '@angular/platform-browser';
 
 import {
     NereusSharedLibsModule,
-    JhiLanguageHelper,
-    FindLanguageFromKeyPipe,
     JhiAlertComponent,
     JhiAlertErrorComponent
 } from './';
@@ -14,12 +12,10 @@ import {
         NereusSharedLibsModule
     ],
     declarations: [
-        FindLanguageFromKeyPipe,
         JhiAlertComponent,
         JhiAlertErrorComponent
     ],
     providers: [
-        JhiLanguageHelper,
         Title,
         {
             provide: LOCALE_ID,
@@ -28,7 +24,6 @@ import {
     ],
     exports: [
         NereusSharedLibsModule,
-        FindLanguageFromKeyPipe,
         JhiAlertComponent,
         JhiAlertErrorComponent
     ]

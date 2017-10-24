@@ -9,6 +9,10 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Accounts } from './accounts.model';
 import { AccountsPopupService } from './accounts-popup.service';
 import { AccountsService } from './accounts.service';
+import { Portfolio, PortfolioService } from '../portfolio';
+import { Asset, AssetService } from '../asset';
+import { Institution, InstitutionService } from '../institution';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-accounts-dialog',
@@ -19,16 +23,31 @@ export class AccountsDialogComponent implements OnInit {
     accounts: Accounts;
     isSaving: boolean;
 
+    portfolios: Portfolio[];
+
+    assets: Asset[];
+
+    institutions: Institution[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private accountsService: AccountsService,
+        private portfolioService: PortfolioService,
+        private assetService: AssetService,
+        private institutionService: InstitutionService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.portfolioService.query()
+            .subscribe((res: ResponseWrapper) => { this.portfolios = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.assetService.query()
+            .subscribe((res: ResponseWrapper) => { this.assets = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.institutionService.query()
+            .subscribe((res: ResponseWrapper) => { this.institutions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -63,6 +82,29 @@ export class AccountsDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackPortfolioById(index: number, item: Portfolio) {
+        return item.id;
+    }
+
+    trackAssetById(index: number, item: Asset) {
+        return item.id;
+    }
+
+    trackInstitutionById(index: number, item: Institution) {
+        return item.id;
+    }
+
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
     }
 }
 

@@ -1,45 +1,45 @@
 
 <div *ngIf="asset">
-    <h2><span jhiTranslate="nereusApp.asset.detail.title">Asset</span> {{asset.id}}</h2>
+    <h2><span>Asset</span> {{asset.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="nereusApp.asset.createdAt">Created At</span></dt>
+        <dt><span>Created At</span></dt>
         <dd>
             <span>{{asset.createdAt | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.asset.updatedAt">Updated At</span></dt>
+        <dt><span>Updated At</span></dt>
         <dd>
             <span>{{asset.updatedAt | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.asset.description">Description</span></dt>
+        <dt><span>Description</span></dt>
         <dd>
             <span>{{asset.description}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.asset.code">Code</span></dt>
+        <dt><span>Code</span></dt>
         <dd>
             <span>{{asset.code}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.asset.symbol">Symbol</span></dt>
+        <dt><span>Symbol</span></dt>
         <dd>
             <span>{{asset.symbol}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.asset.type">Type</span></dt>
+        <dt><span>Type</span></dt>
         <dd>
-            <span jhiTranslate="{{'nereusApp.AssetType.' + asset.type}}">{{asset.type}}</span>
+            <span>{{asset.type}}</span>
         </dd>
     </dl>
 
     <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
     <button type="button"
             [routerLink]="['/', { outlets: { popup: 'asset/'+ asset.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
     </button>
 </div>

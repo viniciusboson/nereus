@@ -3,8 +3,8 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "fromWallet",
-            "otherEntityName": "wallet",
+            "relationshipName": "fromPosition",
+            "otherEntityName": "position",
             "otherEntityField": "description"
         },
         {
@@ -15,21 +15,9 @@
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "fromAsset",
-            "otherEntityName": "asset",
-            "otherEntityField": "code"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "toWallet",
-            "otherEntityName": "wallet",
+            "relationshipName": "toPosition",
+            "otherEntityName": "position",
             "otherEntityField": "description"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "toAsset",
-            "otherEntityName": "asset",
-            "otherEntityField": "code"
         },
         {
             "relationshipType": "many-to-one",
@@ -41,25 +29,45 @@
     "fields": [
         {
             "fieldName": "createdAt",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "updatedAt",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "executedAt",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "fromAmount",
-            "fieldType": "Double"
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "toAmount",
-            "fieldType": "Double"
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
-    "changelogDate": "20171022135229",
+    "changelogDate": "20171024010822",
     "entityTableName": "operation",
     "dto": "mapstruct",
     "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "doris"
 }

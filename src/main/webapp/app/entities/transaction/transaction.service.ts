@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
@@ -11,7 +10,7 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class TransactionService {
 
-    private resourceUrl = SERVER_API_URL + 'api/transactions';
+    private resourceUrl = '/doris/api/transactions';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
@@ -66,6 +65,8 @@ export class TransactionService {
             .convertDateTimeFromServer(json.createdAt);
         entity.updatedAt = this.dateUtils
             .convertDateTimeFromServer(json.updatedAt);
+        entity.executedAt = this.dateUtils
+            .convertDateTimeFromServer(json.executedAt);
         return entity;
     }
 
@@ -78,6 +79,8 @@ export class TransactionService {
         copy.createdAt = this.dateUtils.toDate(transaction.createdAt);
 
         copy.updatedAt = this.dateUtils.toDate(transaction.updatedAt);
+
+        copy.executedAt = this.dateUtils.toDate(transaction.executedAt);
         return copy;
     }
 }

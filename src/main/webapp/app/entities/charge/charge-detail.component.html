@@ -1,34 +1,34 @@
 
 <div *ngIf="charge">
-    <h2><span jhiTranslate="nereusApp.charge.detail.title">Charge</span> {{charge.id}}</h2>
+    <h2><span>Charge</span> {{charge.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="nereusApp.charge.createdAt">Created At</span></dt>
+        <dt><span>Created At</span></dt>
         <dd>
             <span>{{charge.createdAt | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.charge.updatedAt">Updated At</span></dt>
+        <dt><span>Updated At</span></dt>
         <dd>
             <span>{{charge.updatedAt | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.charge.description">Description</span></dt>
+        <dt><span>Description</span></dt>
         <dd>
             <span>{{charge.description}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.charge.type">Type</span></dt>
+        <dt><span>Charge Type</span></dt>
         <dd>
-            <span jhiTranslate="{{'nereusApp.ChargeType.' + charge.type}}">{{charge.type}}</span>
+            <span>{{charge.chargeType}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.charge.operationType">Operation Type</span></dt>
+        <dt><span>Operation Type</span></dt>
         <dd>
-            <span jhiTranslate="{{'nereusApp.OperationType.' + charge.operationType}}">{{charge.operationType}}</span>
+            <span>{{charge.operationType}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.charge.amount">Amount</span></dt>
+        <dt><span>Amount</span></dt>
         <dd>
             <span>{{charge.amount}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.charge.institution">Institution</span></dt>
+        <dt><span>Institution</span></dt>
         <dd>
             <div *ngIf="charge.institutionId">
                 <a [routerLink]="['/institution', charge.institutionId]">{{charge.institutionDescription}}</a>
@@ -39,13 +39,13 @@
     <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
     <button type="button"
             [routerLink]="['/', { outlets: { popup: 'charge/'+ charge.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
     </button>
 </div>

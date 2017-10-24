@@ -15,7 +15,7 @@ export const operationRoute: Routes = [
         component: OperationComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.operation.home.title'
+            pageTitle: 'Operations'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -23,7 +23,7 @@ export const operationRoute: Routes = [
         component: OperationDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.operation.home.title'
+            pageTitle: 'Operations'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -35,7 +35,7 @@ export const operationPopupRoute: Routes = [
         component: OperationPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.operation.home.title'
+            pageTitle: 'Operations'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -45,7 +45,7 @@ export const operationPopupRoute: Routes = [
         component: OperationPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.operation.home.title'
+            pageTitle: 'Operations'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -55,7 +55,7 @@ export const operationPopupRoute: Routes = [
         component: OperationDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.operation.home.title'
+            pageTitle: 'Operations'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

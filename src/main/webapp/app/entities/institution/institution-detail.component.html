@@ -1,18 +1,18 @@
 
 <div *ngIf="institution">
-    <h2><span jhiTranslate="nereusApp.institution.detail.title">Institution</span> {{institution.id}}</h2>
+    <h2><span>Institution</span> {{institution.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="nereusApp.institution.createdAt">Created At</span></dt>
+        <dt><span>Created At</span></dt>
         <dd>
             <span>{{institution.createdAt | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.institution.updatedAt">Updated At</span></dt>
+        <dt><span>Updated At</span></dt>
         <dd>
             <span>{{institution.updatedAt | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.institution.description">Description</span></dt>
+        <dt><span>Description</span></dt>
         <dd>
             <span>{{institution.description}}</span>
         </dd>
@@ -21,13 +21,13 @@
     <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
     <button type="button"
             [routerLink]="['/', { outlets: { popup: 'institution/'+ institution.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
     </button>
 </div>

@@ -1,8 +1,7 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.oceanus.nereus",
-      "nativeLanguage": "en"
+      "packageName": "com.oceanus.nereus"
     },
     "jhipsterVersion": "4.10.0",
     "baseName": "nereus",
@@ -14,28 +13,23 @@
     "clusteredHttpSession": false,
     "websocket": false,
     "databaseType": "sql",
-    "devDatabaseType": "h2Memory",
+    "devDatabaseType": "h2Disk",
     "prodDatabaseType": "postgresql",
     "searchEngine": false,
-    "messageBroker": "kafka",
+    "messageBroker": false,
     "serviceDiscoveryType": "eureka",
     "buildTool": "gradle",
     "enableSocialSignIn": false,
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "ce3768b27972c3887b9492ac9f713f5943741f4b",
+    "jwtSecretKey": "5cd3721a5208e0f180541bd95882b1fb75c1f5a0",
     "clientFramework": "angularX",
-    "useSass": true,
+    "useSass": false,
     "clientPackageManager": "yarn",
     "applicationType": "gateway",
     "testFrameworks": [
       "gatling"
     ],
     "jhiPrefix": "jhi",
-    "enableTranslation": true,
-    "nativeLanguage": "en",
-    "languages": [
-      "en",
-      "pt-pt"
-    ]
+    "enableTranslation": false
   }
 }

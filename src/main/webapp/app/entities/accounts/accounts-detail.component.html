@@ -1,33 +1,51 @@
 
 <div *ngIf="accounts">
-    <h2><span jhiTranslate="nereusApp.accounts.detail.title">Accounts</span> {{accounts.id}}</h2>
+    <h2><span>Accounts</span> {{accounts.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="nereusApp.accounts.createdAt">Created At</span></dt>
+        <dt><span>Created At</span></dt>
         <dd>
             <span>{{accounts.createdAt | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.accounts.updatedAt">Updated At</span></dt>
+        <dt><span>Updated At</span></dt>
         <dd>
             <span>{{accounts.updatedAt | date:'medium'}}</span>
         </dd>
-        <dt><span jhiTranslate="nereusApp.accounts.description">Description</span></dt>
+        <dt><span>Description</span></dt>
         <dd>
             <span>{{accounts.description}}</span>
+        </dd>
+        <dt><span>Portfolio</span></dt>
+        <dd>
+            <div *ngIf="accounts.portfolioId">
+                <a [routerLink]="['/portfolio', accounts.portfolioId]">{{accounts.portfolioDescription}}</a>
+            </div>
+        </dd>
+        <dt><span>Assets</span></dt>
+        <dd>
+            <span *ngFor="let assets of accounts.assets; let last = last">
+                <a [routerLink]="['/asset', assets?.id ]">{{assets.code}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span>Institutions</span></dt>
+        <dd>
+            <span *ngFor="let institutions of accounts.institutions; let last = last">
+                <a [routerLink]="['/institution', institutions?.id ]">{{institutions.description}}</a>{{last ? '' : ', '}}
+            </span>
         </dd>
     </dl>
 
     <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
     <button type="button"
             [routerLink]="['/', { outlets: { popup: 'accounts/'+ accounts.id + '/edit'} }]"
             replaceUrl="true"
             class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
     </button>
 </div>

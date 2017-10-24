@@ -1,18 +1,18 @@
 <div>
     <h2>
-        <span jhiTranslate="gateway.title">Gateway</span>
+        <span>Gateway</span>
         <button class="btn btn-primary float-xs-right" (click)="refresh()" (disabled)="updatingRoutes">
-            <span class="fa fa-refresh"></span> <span jhiTranslate="gateway.refresh.button">Refresh</span>
+            <span class="fa fa-refresh"></span> <span>Refresh</span>
         </button>
     </h2>
-    <h3 jhiTranslate="gateway.routes.title">Current routes</h3>
+    <h3>Current routes</h3>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th jhiTranslate="gateway.routes.url">URL</th>
-                <th jhiTranslate="gateway.routes.service">Service</th>
-                <th jhiTranslate="gateway.routes.servers">Available servers</th>
+                <th>URL</th>
+                <th>Service</th>
+                <th>Available servers</th>
             </tr>
             </thead>
             <tbody>
@@ -20,7 +20,7 @@
                     <td>{{route.path}}</td>
                     <td>{{route.serviceId}}</td>
                     <td>
-                        <div *ngIf="route.serviceInstances.length === 0" class="label label-danger" jhiTranslate="gateway.routes.error">
+                        <div *ngIf="route.serviceInstances.length === 0" class="label label-danger">
                             Warning: no server available!
                         </div>
                         <div class="table-responsive">

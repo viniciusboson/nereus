@@ -19,7 +19,7 @@ export class Charge implements BaseEntity {
         public createdAt?: any,
         public updatedAt?: any,
         public description?: string,
-        public type?: ChargeType,
+        public chargeType?: ChargeType,
         public operationType?: OperationType,
         public amount?: number,
         public institutionId?: number,

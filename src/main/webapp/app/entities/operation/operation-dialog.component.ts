@@ -9,9 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Operation } from './operation.model';
 import { OperationPopupService } from './operation-popup.service';
 import { OperationService } from './operation.service';
-import { Wallet, WalletService } from '../wallet';
+import { Position, PositionService } from '../position';
 import { Institution, InstitutionService } from '../institution';
-import { Asset, AssetService } from '../asset';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -23,31 +22,26 @@ export class OperationDialogComponent implements OnInit {
     operation: Operation;
     isSaving: boolean;
 
-    wallets: Wallet[];
+    positions: Position[];
 
     institutions: Institution[];
-
-    assets: Asset[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private operationService: OperationService,
-        private walletService: WalletService,
+        private positionService: PositionService,
         private institutionService: InstitutionService,
-        private assetService: AssetService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.walletService.query()
-            .subscribe((res: ResponseWrapper) => { this.wallets = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.positionService.query()
+            .subscribe((res: ResponseWrapper) => { this.positions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.institutionService.query()
             .subscribe((res: ResponseWrapper) => { this.institutions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.assetService.query()
-            .subscribe((res: ResponseWrapper) => { this.assets = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -84,15 +78,11 @@ export class OperationDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackWalletById(index: number, item: Wallet) {
+    trackPositionById(index: number, item: Position) {
         return item.id;
     }
 
     trackInstitutionById(index: number, item: Institution) {
-        return item.id;
-    }
-
-    trackAssetById(index: number, item: Asset) {
         return item.id;
     }
 }

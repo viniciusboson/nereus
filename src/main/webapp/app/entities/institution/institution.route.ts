@@ -15,7 +15,7 @@ export const institutionRoute: Routes = [
         component: InstitutionComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.institution.home.title'
+            pageTitle: 'Institutions'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -23,7 +23,7 @@ export const institutionRoute: Routes = [
         component: InstitutionDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.institution.home.title'
+            pageTitle: 'Institutions'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -35,7 +35,7 @@ export const institutionPopupRoute: Routes = [
         component: InstitutionPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.institution.home.title'
+            pageTitle: 'Institutions'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -45,7 +45,7 @@ export const institutionPopupRoute: Routes = [
         component: InstitutionPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.institution.home.title'
+            pageTitle: 'Institutions'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -55,7 +55,7 @@ export const institutionPopupRoute: Routes = [
         component: InstitutionDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.institution.home.title'
+            pageTitle: 'Institutions'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

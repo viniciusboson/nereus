@@ -10,7 +10,7 @@ import { Position } from './position.model';
 import { PositionPopupService } from './position-popup.service';
 import { PositionService } from './position.service';
 import { Asset, AssetService } from '../asset';
-import { Wallet, WalletService } from '../wallet';
+import { Accounts, AccountsService } from '../accounts';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -24,14 +24,14 @@ export class PositionDialogComponent implements OnInit {
 
     assets: Asset[];
 
-    wallets: Wallet[];
+    accounts: Accounts[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private positionService: PositionService,
         private assetService: AssetService,
-        private walletService: WalletService,
+        private accountsService: AccountsService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -40,8 +40,8 @@ export class PositionDialogComponent implements OnInit {
         this.isSaving = false;
         this.assetService.query()
             .subscribe((res: ResponseWrapper) => { this.assets = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.walletService.query()
-            .subscribe((res: ResponseWrapper) => { this.wallets = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.accountsService.query()
+            .subscribe((res: ResponseWrapper) => { this.accounts = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -82,7 +82,7 @@ export class PositionDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackWalletById(index: number, item: Wallet) {
+    trackAccountsById(index: number, item: Accounts) {
         return item.id;
     }
 }

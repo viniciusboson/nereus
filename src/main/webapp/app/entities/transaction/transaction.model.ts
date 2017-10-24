@@ -10,6 +10,7 @@ export class Transaction implements BaseEntity {
         public id?: number,
         public createdAt?: any,
         public updatedAt?: any,
+        public executedAt?: any,
         public description?: string,
         public amount?: number,
         public type?: TransactionType,

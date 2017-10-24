@@ -15,7 +15,7 @@ export const transactionRoute: Routes = [
         component: TransactionComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.transaction.home.title'
+            pageTitle: 'Transactions'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -23,7 +23,7 @@ export const transactionRoute: Routes = [
         component: TransactionDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.transaction.home.title'
+            pageTitle: 'Transactions'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -35,7 +35,7 @@ export const transactionPopupRoute: Routes = [
         component: TransactionPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.transaction.home.title'
+            pageTitle: 'Transactions'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -45,7 +45,7 @@ export const transactionPopupRoute: Routes = [
         component: TransactionPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.transaction.home.title'
+            pageTitle: 'Transactions'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -55,7 +55,7 @@ export const transactionPopupRoute: Routes = [
         component: TransactionDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'nereusApp.transaction.home.title'
+            pageTitle: 'Transactions'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

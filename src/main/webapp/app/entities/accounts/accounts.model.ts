@@ -6,7 +6,9 @@ export class Accounts implements BaseEntity {
         public createdAt?: any,
         public updatedAt?: any,
         public description?: string,
-        public wallets?: BaseEntity[],
+        public portfolioId?: number,
+        public assets?: BaseEntity[],
+        public institutions?: BaseEntity[],
     ) {
     }
 }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { SERVER_API_URL } from '../../app.constants';
 
 import { JhiDateUtils } from 'ng-jhipster';
 
@@ -11,7 +10,7 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class AccountsService {
 
-    private resourceUrl = SERVER_API_URL + 'api/accounts';
+    private resourceUrl = '/doris/api/accounts';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 

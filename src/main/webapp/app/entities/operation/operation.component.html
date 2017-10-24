@@ -1,9 +1,9 @@
 <div>
     <h2>
-        <span jhiTranslate="nereusApp.operation.home.title">Operations</span>
+        <span>Operations</span>
         <button class="btn btn-primary float-right jh-create-entity create-operation" [routerLink]="['/', { outlets: { popup: ['operation-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="nereusApp.operation.home.createLabel">
+            <span >
             Create new Operation
             </span>
         </button>
@@ -16,17 +16,16 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="nereusApp.operation.createdAt">Created At</span></th>
-            <th><span jhiTranslate="nereusApp.operation.updatedAt">Updated At</span></th>
-            <th><span jhiTranslate="nereusApp.operation.fromAmount">From Amount</span></th>
-            <th><span jhiTranslate="nereusApp.operation.toAmount">To Amount</span></th>
-            <th><span jhiTranslate="nereusApp.operation.fromWallet">From Wallet</span></th>
-            <th><span jhiTranslate="nereusApp.operation.fromInstitution">From Institution</span></th>
-            <th><span jhiTranslate="nereusApp.operation.fromAsset">From Asset</span></th>
-            <th><span jhiTranslate="nereusApp.operation.toWallet">To Wallet</span></th>
-            <th><span jhiTranslate="nereusApp.operation.toAsset">To Asset</span></th>
-            <th><span jhiTranslate="nereusApp.operation.toInstitution">To Institution</span></th>
+            <th><span>ID</span></th>
+            <th><span>Created At</span></th>
+            <th><span>Updated At</span></th>
+            <th><span>Executed At</span></th>
+            <th><span>From Amount</span></th>
+            <th><span>To Amount</span></th>
+            <th><span>From Position</span></th>
+            <th><span>From Institution</span></th>
+            <th><span>To Position</span></th>
+            <th><span>To Institution</span></th>
             <th></th>
             </tr>
             </thead>
@@ -35,11 +34,12 @@
                 <td><a [routerLink]="['../operation', operation.id ]">{{operation.id}}</a></td>
                 <td>{{operation.createdAt | date:'medium'}}</td>
                 <td>{{operation.updatedAt | date:'medium'}}</td>
+                <td>{{operation.executedAt | date:'medium'}}</td>
                 <td>{{operation.fromAmount}}</td>
                 <td>{{operation.toAmount}}</td>
                 <td>
-                    <div *ngIf="operation.fromWalletId">
-                        <a [routerLink]="['../wallet', operation.fromWalletId  ]" >{{operation.fromWalletDescription}}</a>
+                    <div *ngIf="operation.fromPositionId">
+                        <a [routerLink]="['../position', operation.fromPositionId  ]" >{{operation.fromPositionDescription}}</a>
                     </div>
                 </td>
                 <td>
@@ -48,18 +48,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="operation.fromAssetId">
-                        <a [routerLink]="['../asset', operation.fromAssetId  ]" >{{operation.fromAssetCode}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="operation.toWalletId">
-                        <a [routerLink]="['../wallet', operation.toWalletId  ]" >{{operation.toWalletDescription}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="operation.toAssetId">
-                        <a [routerLink]="['../asset', operation.toAssetId  ]" >{{operation.toAssetCode}}</a>
+                    <div *ngIf="operation.toPositionId">
+                        <a [routerLink]="['../position', operation.toPositionId  ]" >{{operation.toPositionDescription}}</a>
                     </div>
                 </td>
                 <td>
@@ -73,21 +63,21 @@
                                 [routerLink]="['../operation', operation.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            <span class="d-none d-md-inline">View</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'operation/'+ operation.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            <span class="d-none d-md-inline">Edit</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'operation/'+ operation.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            <span class="d-none d-md-inline">Delete</span>
                         </button>
                     </div>
                 </td>
