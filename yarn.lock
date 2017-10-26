@@ -3016,9 +3016,9 @@ gaze@^1.0.0:
   dependencies:
     globule "^1.0.0"
 
-generator-jhipster@4.10.0:
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/generator-jhipster/-/generator-jhipster-4.10.0.tgz#9c72172b3005994bbd3a46032c707153067ad695"
+generator-jhipster@4.10.1:
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/generator-jhipster/-/generator-jhipster-4.10.1.tgz#fc691c0445899466da26e7c5f5f4e9a86f378d69"
   dependencies:
     chalk "2.1.0"
     cheerio "0.22.0"
@@ -7454,19 +7454,12 @@ tfunk@^3.0.1:
     chalk "^1.1.1"
     object-path "^0.9.0"
 
-through2@2.0.1:
+through2@2.0.1, through2@^2.0.0, through2@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.1.tgz#384e75314d49f32de12eebb8136b8eb6b5d59da9"
   dependencies:
     readable-stream "~2.0.0"
     xtend "~4.0.0"
-
-through2@^2.0.0, through2@^2.0.1:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
-  dependencies:
-    readable-stream "^2.1.5"
-    xtend "~4.0.1"
 
 through@X.X.X, through@^2.3.6, through@~2.3.4, through@~2.3.6:
   version "2.3.8"
@@ -8320,7 +8313,7 @@ xmlhttprequest-ssl@1.5.3:
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.3.tgz#185a888c04eca46c3e4070d99f7b49de3528992d"
 
-xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.0, xtend@~4.0.1:
+xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 
