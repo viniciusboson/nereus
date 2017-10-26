@@ -8,6 +8,7 @@ import { NereusAccountsModule } from './accounts/accounts.module';
 import { NereusPositionModule } from './position/position.module';
 import { NereusOperationModule } from './operation/operation.module';
 import { NereusTransactionModule } from './transaction/transaction.module';
+import { NereusPositionMetricModule } from './position-metric/position-metric.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NereusTransactionModule } from './transaction/transaction.module';
         NereusPositionModule,
         NereusOperationModule,
         NereusTransactionModule,
+        NereusPositionMetricModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

@@ -38,6 +38,12 @@
                 <a [routerLink]="['/institution', charge.institutionId]">{{charge.institutionDescription}}</a>
             </div>
         </dd>
+        <dt><span>Asset</span></dt>
+        <dd>
+            <span *ngFor="let asset of charge.assets; let last = last">
+                <a [routerLink]="['/asset', asset?.id ]">{{asset.code}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
     </dl>
 
     <button type="submit"

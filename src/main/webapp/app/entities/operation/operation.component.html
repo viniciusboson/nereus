@@ -19,6 +19,7 @@
             <th><span>ID</span></th>
             <th><span>Created At</span></th>
             <th><span>Updated At</span></th>
+            <th><span>Modified By</span></th>
             <th><span>Executed At</span></th>
             <th><span>Amount From</span></th>
             <th><span>Amount To</span></th>
@@ -34,6 +35,7 @@
                 <td><a [routerLink]="['../operation', operation.id ]">{{operation.id}}</a></td>
                 <td>{{operation.createdAt | date:'medium'}}</td>
                 <td>{{operation.updatedAt | date:'medium'}}</td>
+                <td>{{operation.modifiedBy}}</td>
                 <td>{{operation.executedAt | date:'medium'}}</td>
                 <td>{{operation.amountFrom}}</td>
                 <td>{{operation.amountTo}}</td>

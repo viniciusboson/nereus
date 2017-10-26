@@ -6,31 +6,31 @@ import { Observable } from 'rxjs/Rx';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { Charge } from './charge.model';
-import { ChargePopupService } from './charge-popup.service';
-import { ChargeService } from './charge.service';
-import { Institution, InstitutionService } from '../institution';
+import { PositionMetric } from './position-metric.model';
+import { PositionMetricPopupService } from './position-metric-popup.service';
+import { PositionMetricService } from './position-metric.service';
+import { Position, PositionService } from '../position';
 import { Asset, AssetService } from '../asset';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
-    selector: 'jhi-charge-dialog',
-    templateUrl: './charge-dialog.component.html'
+    selector: 'jhi-position-metric-dialog',
+    templateUrl: './position-metric-dialog.component.html'
 })
-export class ChargeDialogComponent implements OnInit {
+export class PositionMetricDialogComponent implements OnInit {
 
-    charge: Charge;
+    positionMetric: PositionMetric;
     isSaving: boolean;
 
-    institutions: Institution[];
+    positions: Position[];
 
     assets: Asset[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
-        private chargeService: ChargeService,
-        private institutionService: InstitutionService,
+        private positionMetricService: PositionMetricService,
+        private positionService: PositionService,
         private assetService: AssetService,
         private eventManager: JhiEventManager
     ) {
@@ -38,8 +38,8 @@ export class ChargeDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.institutionService.query()
-            .subscribe((res: ResponseWrapper) => { this.institutions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.positionService.query()
+            .subscribe((res: ResponseWrapper) => { this.positions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.assetService.query()
             .subscribe((res: ResponseWrapper) => { this.assets = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
@@ -50,22 +50,22 @@ export class ChargeDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.charge.id !== undefined) {
+        if (this.positionMetric.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.chargeService.update(this.charge));
+                this.positionMetricService.update(this.positionMetric));
         } else {
             this.subscribeToSaveResponse(
-                this.chargeService.create(this.charge));
+                this.positionMetricService.create(this.positionMetric));
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<Charge>) {
-        result.subscribe((res: Charge) =>
+    private subscribeToSaveResponse(result: Observable<PositionMetric>) {
+        result.subscribe((res: PositionMetric) =>
             this.onSaveSuccess(res), (res: Response) => this.onSaveError());
     }
 
-    private onSaveSuccess(result: Charge) {
-        this.eventManager.broadcast({ name: 'chargeListModification', content: 'OK'});
+    private onSaveSuccess(result: PositionMetric) {
+        this.eventManager.broadcast({ name: 'positionMetricListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -78,47 +78,36 @@ export class ChargeDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackInstitutionById(index: number, item: Institution) {
+    trackPositionById(index: number, item: Position) {
         return item.id;
     }
 
     trackAssetById(index: number, item: Asset) {
         return item.id;
     }
-
-    getSelected(selectedVals: Array<any>, option: any) {
-        if (selectedVals) {
-            for (let i = 0; i < selectedVals.length; i++) {
-                if (option.id === selectedVals[i].id) {
-                    return selectedVals[i];
-                }
-            }
-        }
-        return option;
-    }
 }
 
 @Component({
-    selector: 'jhi-charge-popup',
+    selector: 'jhi-position-metric-popup',
     template: ''
 })
-export class ChargePopupComponent implements OnInit, OnDestroy {
+export class PositionMetricPopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private chargePopupService: ChargePopupService
+        private positionMetricPopupService: PositionMetricPopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                this.chargePopupService
-                    .open(ChargeDialogComponent as Component, params['id']);
+                this.positionMetricPopupService
+                    .open(PositionMetricDialogComponent as Component, params['id']);
             } else {
-                this.chargePopupService
-                    .open(ChargeDialogComponent as Component);
+                this.positionMetricPopupService
+                    .open(PositionMetricDialogComponent as Component);
             }
         });
     }

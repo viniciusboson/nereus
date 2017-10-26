@@ -47,6 +47,17 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="form-control-label" for="field_modifiedBy">Modified By</label>
+            <input type="text" class="form-control" name="modifiedBy" id="field_modifiedBy"
+                [(ngModel)]="operation.modifiedBy" required />
+            <div [hidden]="!(editForm.controls.modifiedBy?.dirty && editForm.controls.modifiedBy?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.modifiedBy?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" for="field_executedAt">Executed At</label>
             <div class="d-flex">
                 <input id="field_executedAt" type="datetime-local" class="form-control" name="executedAt" [(ngModel)]="operation.executedAt"

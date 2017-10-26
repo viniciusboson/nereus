@@ -1,0 +1,82 @@
+<div>
+    <h2>
+        <span>Position Metrics</span>
+        <button class="btn btn-primary float-right jh-create-entity create-position-metric" [routerLink]="['/', { outlets: { popup: ['position-metric-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Position Metric
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="positionMetrics">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Created At</span></th>
+            <th><span>Updated At</span></th>
+            <th><span>Modified By</span></th>
+            <th><span>Entry Avg Price</span></th>
+            <th><span>Entry Amount</span></th>
+            <th><span>Exit Avg Price</span></th>
+            <th><span>Exit Amount</span></th>
+            <th><span>Tx Costs</span></th>
+            <th><span>Position</span></th>
+            <th><span>Asset Comparison</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let positionMetric of positionMetrics ;trackBy: trackId">
+                <td><a [routerLink]="['../position-metric', positionMetric.id ]">{{positionMetric.id}}</a></td>
+                <td>{{positionMetric.createdAt | date:'medium'}}</td>
+                <td>{{positionMetric.updatedAt | date:'medium'}}</td>
+                <td>{{positionMetric.modifiedBy}}</td>
+                <td>{{positionMetric.entryAvgPrice}}</td>
+                <td>{{positionMetric.entryAmount}}</td>
+                <td>{{positionMetric.exitAvgPrice}}</td>
+                <td>{{positionMetric.exitAmount}}</td>
+                <td>{{positionMetric.txCosts}}</td>
+                <td>
+                    <div *ngIf="positionMetric.positionId">
+                        <a [routerLink]="['../position', positionMetric.positionId  ]" >{{positionMetric.positionDescription}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="positionMetric.assetComparisonId">
+                        <a [routerLink]="['../asset', positionMetric.assetComparisonId  ]" >{{positionMetric.assetComparisonCode}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../position-metric', positionMetric.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'position-metric/'+ positionMetric.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'position-metric/'+ positionMetric.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

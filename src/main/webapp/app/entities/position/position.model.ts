@@ -16,12 +16,14 @@ export class Position implements BaseEntity {
         public id?: number,
         public createdAt?: any,
         public updatedAt?: any,
+        public modifiedBy?: string,
         public description?: string,
         public balance?: number,
         public type?: PositionType,
         public status?: PositionStatus,
         public assetId?: number,
         public accountId?: number,
+        public metrics?: BaseEntity[],
     ) {
     }
 }

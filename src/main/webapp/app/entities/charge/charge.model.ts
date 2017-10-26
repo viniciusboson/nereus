@@ -24,6 +24,7 @@ export class Charge implements BaseEntity {
         public operationType?: OperationType,
         public amount?: number,
         public institutionId?: number,
+        public assets?: BaseEntity[],
     ) {
     }
 }
