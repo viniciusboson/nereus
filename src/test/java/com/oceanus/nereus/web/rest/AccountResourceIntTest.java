@@ -1,4 +1,5 @@
 package com.oceanus.nereus.web.rest;
+
 import com.oceanus.nereus.config.Constants;
 import com.oceanus.nereus.NereusApp;
 import com.oceanus.nereus.domain.Authority;
@@ -13,6 +14,7 @@ import com.oceanus.nereus.web.rest.vm.KeyAndPasswordVM;
 import com.oceanus.nereus.web.rest.vm.ManagedUserVM;
 import com.oceanus.nereus.service.UserService;
 import org.apache.commons.lang3.RandomStringUtils;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,10 +30,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.Instant;
 import java.time.LocalDate;
+
 import java.util.*;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.mockito.Matchers.anyObject;
@@ -81,9 +84,9 @@ public class AccountResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         doNothing().when(mockMailService).sendActivationEmail(anyObject());
-
         AccountResource accountResource =
             new AccountResource(userRepository, userService, mockMailService);
+
         AccountResource accountUserMockResource =
             new AccountResource(userRepository, mockUserService, mockMailService);
         this.restMvc = MockMvcBuilders.standaloneSetup(accountResource)
