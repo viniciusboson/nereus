@@ -1,0 +1,61 @@
+
+<div *ngIf="transaction">
+    <h2><span>Transaction</span> {{transaction.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Created At</span></dt>
+        <dd>
+            <span>{{transaction.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span>Updated At</span></dt>
+        <dd>
+            <span>{{transaction.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span>Executed At</span></dt>
+        <dd>
+            <span>{{transaction.executedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{transaction.description}}</span>
+        </dd>
+        <dt><span>Amount</span></dt>
+        <dd>
+            <span>{{transaction.amount}}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+            <span>{{transaction.type}}</span>
+        </dd>
+        <dt><span>Balance</span></dt>
+        <dd>
+            <span>{{transaction.balance}}</span>
+        </dd>
+        <dt><span>Operation</span></dt>
+        <dd>
+            <div *ngIf="transaction.operationId">
+                <a [routerLink]="['/operation', transaction.operationId]">{{transaction.operationId}}</a>
+            </div>
+        </dd>
+        <dt><span>Position</span></dt>
+        <dd>
+            <div *ngIf="transaction.positionId">
+                <a [routerLink]="['/position', transaction.positionId]">{{transaction.positionDescription}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'transaction/'+ transaction.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
