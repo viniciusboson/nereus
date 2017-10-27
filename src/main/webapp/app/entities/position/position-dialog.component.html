@@ -113,17 +113,29 @@
 
         <div class="form-group">
             <label class="form-control-label" for="field_asset">Asset</label>
-            <select class="form-control" id="field_asset" name="asset" [(ngModel)]="position.assetId" >
-                <option [ngValue]="null"></option>
+            <select class="form-control" id="field_asset" name="asset" [(ngModel)]="position.assetId"  required>
+                <option *ngIf="!editForm.value.asset" [ngValue]="null" selected></option>
                 <option [ngValue]="assetOption.id" *ngFor="let assetOption of assets; trackBy: trackAssetById">{{assetOption.code}}</option>
             </select>
         </div>
+        <div [hidden]="!(editForm.controls.asset?.dirty && editForm.controls.asset?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.asset?.errors?.required">
+                This field is required.
+            </small>
+        </div>
         <div class="form-group">
             <label class="form-control-label" for="field_account">Account</label>
-            <select class="form-control" id="field_account" name="account" [(ngModel)]="position.accountId" >
-                <option [ngValue]="null"></option>
+            <select class="form-control" id="field_account" name="account" [(ngModel)]="position.accountId"  required>
+                <option *ngIf="!editForm.value.account" [ngValue]="null" selected></option>
                 <option [ngValue]="accountsOption.id" *ngFor="let accountsOption of accounts; trackBy: trackAccountsById">{{accountsOption.description}}</option>
             </select>
+        </div>
+        <div [hidden]="!(editForm.controls.account?.dirty && editForm.controls.account?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.account?.errors?.required">
+                This field is required.
+            </small>
         </div>
     </div>
     <div class="modal-footer">

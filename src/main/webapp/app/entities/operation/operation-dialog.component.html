@@ -107,31 +107,55 @@
 
         <div class="form-group">
             <label class="form-control-label" for="field_positionFrom">Position From</label>
-            <select class="form-control" id="field_positionFrom" name="positionFrom" [(ngModel)]="operation.positionFromId" >
-                <option [ngValue]="null"></option>
+            <select class="form-control" id="field_positionFrom" name="positionFrom" [(ngModel)]="operation.positionFromId"  required>
+                <option *ngIf="!editForm.value.positionFrom" [ngValue]="null" selected></option>
                 <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
             </select>
+        </div>
+        <div [hidden]="!(editForm.controls.positionFrom?.dirty && editForm.controls.positionFrom?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.positionFrom?.errors?.required">
+                This field is required.
+            </small>
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_institutionFrom">Institution From</label>
-            <select class="form-control" id="field_institutionFrom" name="institutionFrom" [(ngModel)]="operation.institutionFromId" >
-                <option [ngValue]="null"></option>
+            <select class="form-control" id="field_institutionFrom" name="institutionFrom" [(ngModel)]="operation.institutionFromId"  required>
+                <option *ngIf="!editForm.value.institutionFrom" [ngValue]="null" selected></option>
                 <option [ngValue]="institutionOption.id" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
             </select>
+        </div>
+        <div [hidden]="!(editForm.controls.institutionFrom?.dirty && editForm.controls.institutionFrom?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.institutionFrom?.errors?.required">
+                This field is required.
+            </small>
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_positionTo">Position To</label>
-            <select class="form-control" id="field_positionTo" name="positionTo" [(ngModel)]="operation.positionToId" >
-                <option [ngValue]="null"></option>
+            <select class="form-control" id="field_positionTo" name="positionTo" [(ngModel)]="operation.positionToId"  required>
+                <option *ngIf="!editForm.value.positionTo" [ngValue]="null" selected></option>
                 <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
             </select>
         </div>
+        <div [hidden]="!(editForm.controls.positionTo?.dirty && editForm.controls.positionTo?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.positionTo?.errors?.required">
+                This field is required.
+            </small>
+        </div>
         <div class="form-group">
             <label class="form-control-label" for="field_institutionTo">Institution To</label>
-            <select class="form-control" id="field_institutionTo" name="institutionTo" [(ngModel)]="operation.institutionToId" >
-                <option [ngValue]="null"></option>
+            <select class="form-control" id="field_institutionTo" name="institutionTo" [(ngModel)]="operation.institutionToId"  required>
+                <option *ngIf="!editForm.value.institutionTo" [ngValue]="null" selected></option>
                 <option [ngValue]="institutionOption.id" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
             </select>
+        </div>
+        <div [hidden]="!(editForm.controls.institutionTo?.dirty && editForm.controls.institutionTo?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.institutionTo?.errors?.required">
+                This field is required.
+            </small>
         </div>
     </div>
     <div class="modal-footer">

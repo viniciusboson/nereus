@@ -115,10 +115,16 @@
 
         <div class="form-group">
             <label class="form-control-label" for="field_institution">Institution</label>
-            <select class="form-control" id="field_institution" name="institution" [(ngModel)]="charge.institutionId" >
-                <option [ngValue]="null"></option>
+            <select class="form-control" id="field_institution" name="institution" [(ngModel)]="charge.institutionId"  required>
+                <option *ngIf="!editForm.value.institution" [ngValue]="null" selected></option>
                 <option [ngValue]="institutionOption.id" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
             </select>
+        </div>
+        <div [hidden]="!(editForm.controls.institution?.dirty && editForm.controls.institution?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.institution?.errors?.required">
+                This field is required.
+            </small>
         </div>
         <div class="form-group">
             <label for="field_asset">Asset</label>

@@ -71,22 +71,40 @@
 
         <div class="form-group">
             <label class="form-control-label" for="field_portfolio">Portfolio</label>
-            <select class="form-control" id="field_portfolio" name="portfolio" [(ngModel)]="accounts.portfolioId" >
-                <option [ngValue]="null"></option>
+            <select class="form-control" id="field_portfolio" name="portfolio" [(ngModel)]="accounts.portfolioId"  required>
+                <option *ngIf="!editForm.value.portfolio" [ngValue]="null" selected></option>
                 <option [ngValue]="portfolioOption.id" *ngFor="let portfolioOption of portfolios; trackBy: trackPortfolioById">{{portfolioOption.description}}</option>
             </select>
         </div>
+        <div [hidden]="!(editForm.controls.portfolio?.dirty && editForm.controls.portfolio?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.portfolio?.errors?.required">
+                This field is required.
+            </small>
+        </div>
         <div class="form-group">
             <label for="field_assets">Assets</label>
-            <select class="form-control" id="field_assets" multiple name="assets" [(ngModel)]="accounts.assets">
+            <select class="form-control" id="field_assets" multiple name="assets" [(ngModel)]="accounts.assets" required>
                 <option [ngValue]="getSelected(accounts.assets, assetOption)" *ngFor="let assetOption of assets; trackBy: trackAssetById">{{assetOption.code}}</option>
             </select>
         </div>
+        <div [hidden]="!(editForm.controls.assets?.dirty && editForm.controls.assets?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.assets?.errors?.required">
+                This field is required.
+            </small>
+        </div>
         <div class="form-group">
             <label for="field_institutions">Institutions</label>
-            <select class="form-control" id="field_institutions" multiple name="institutions" [(ngModel)]="accounts.institutions">
+            <select class="form-control" id="field_institutions" multiple name="institutions" [(ngModel)]="accounts.institutions" required>
                 <option [ngValue]="getSelected(accounts.institutions, institutionOption)" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
             </select>
+        </div>
+        <div [hidden]="!(editForm.controls.institutions?.dirty && editForm.controls.institutions?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.institutions?.errors?.required">
+                This field is required.
+            </small>
         </div>
     </div>
     <div class="modal-footer">
