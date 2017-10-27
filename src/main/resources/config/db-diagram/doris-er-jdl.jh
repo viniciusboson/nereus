@@ -6,6 +6,21 @@ entity Institution {
   description String required // Poloniex, XP, Exodus, Santander
 }
 
+entity Asset {
+  id Long
+  createdAt ZonedDateTime required
+  updatedAt ZonedDateTime required
+  modifiedBy String required
+  description String required // US Dollar, Real, Bitcoin
+  code String required //USD, BRL, BTC
+  symbol String // $, £
+  type AssetType required
+}
+
+enum AssetType {
+  COMMODITY, CURRENCY, FUTURE, INDICE, OPTION, STOCK
+}
+
 entity Charge {
   id Long
   createdAt ZonedDateTime required
@@ -25,19 +40,8 @@ relationship ManyToOne {
   Charge{institution(description)} to Institution
 }
 
-entity Asset {
-  id Long
-  createdAt ZonedDateTime required
-  updatedAt ZonedDateTime required
-  modifiedBy String required
-  description String required // US Dollar, Real, Bitcoin
-  code String required //USD, BRL, BTC
-  symbol String // $, £
-  type AssetType required
-}
-
-enum AssetType {
-  COMMODITY, CURRENCY, FUTURE, INDICE, OPTION, STOCK
+relationship ManyToMany {
+  Charge{asset(code)} to Asset
 }
 
 entity Portfolio {
@@ -52,6 +56,7 @@ entity Accounts {
   id Long
   createdAt ZonedDateTime required
   updatedAt ZonedDateTime required
+  modifiedBy String required
   description String required // Bounds, Stocks, CryptoCoins
 }
 
@@ -68,6 +73,7 @@ entity Position { //history: balance, etc
   id Long
   createdAt ZonedDateTime required
   updatedAt ZonedDateTime required
+  modifiedBy String required
   description String required
   balance Double required
   type PositionType required
@@ -91,6 +97,7 @@ entity Operation {
   id Long
   createdAt ZonedDateTime required
   updatedAt ZonedDateTime required
+  modifiedBy String required
   executedAt ZonedDateTime required
   amountFrom Double required
   amountTo Double required
@@ -111,6 +118,7 @@ entity Transaction {
   id Long
   createdAt ZonedDateTime required
   updatedAt ZonedDateTime required
+  modifiedBy String required
   executedAt ZonedDateTime required
   description String required
   amount Double required
@@ -125,6 +133,23 @@ enum TransactionType {
 relationship ManyToOne {
   Transaction{operation} to Operation,
   Transaction{position(description)} to Position
+}
+
+entity PositionMetric {
+  id Long
+  createdAt ZonedDateTime required
+  updatedAt ZonedDateTime required
+  modifiedBy String required
+  entryAvgPrice Double
+  entryAmount Double
+  exitAvgPrice Double
+  exitAmount Double
+  txCosts Double
+}
+
+relationship ManyToOne {
+  PositionMetric{position(description)} to Position{metrics},
+  PositionMetric{assetComparison(code)} to Asset
 }
 
 dto * with mapstruct
