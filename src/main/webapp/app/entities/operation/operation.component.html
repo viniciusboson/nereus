@@ -18,12 +18,12 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>Executed At</span></th>
-            <th><span>Amount From</span></th>
-            <th><span>Amount To</span></th>
-            <th><span>Position From</span></th>
             <th><span>Institution From</span></th>
-            <th><span>Position To</span></th>
+            <th><span>Position From</span></th>
+            <th><span>Amount From</span></th>
             <th><span>Institution To</span></th>
+            <th><span>Position To</span></th>
+            <th><span>Amount To</span></th>
             <th></th>
             </tr>
             </thead>
@@ -31,7 +31,11 @@
             <tr *ngFor="let operation of operations ;trackBy: trackId">
                 <td><a [routerLink]="['../operation', operation.id ]">{{operation.id}}</a></td>
                 <td>{{operation.executedAt | date:'medium'}}</td>
-                <td>{{operation.amountFrom}}</td>
+                <td>
+                    <div *ngIf="operation.institutionFromId">
+                        <a [routerLink]="['../institution', operation.institutionFromId  ]" >{{operation.institutionFromDescription}}</a>
+                    </div>
+                </td>
                 <td>{{operation.amountTo}}</td>
                 <td>
                     <div *ngIf="operation.positionFromId">
@@ -39,8 +43,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="operation.institutionFromId">
-                        <a [routerLink]="['../institution', operation.institutionFromId  ]" >{{operation.institutionFromDescription}}</a>
+                    <div *ngIf="operation.institutionToId">
+                        <a [routerLink]="['../institution', operation.institutionToId  ]" >{{operation.institutionToDescription}}</a>
                     </div>
                 </td>
                 <td>
@@ -48,11 +52,7 @@
                         <a [routerLink]="['../position', operation.positionToId  ]" >{{operation.positionToDescription}}</a>
                     </div>
                 </td>
-                <td>
-                    <div *ngIf="operation.institutionToId">
-                        <a [routerLink]="['../institution', operation.institutionToId  ]" >{{operation.institutionToDescription}}</a>
-                    </div>
-                </td>
+                <td>{{operation.amountFrom}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

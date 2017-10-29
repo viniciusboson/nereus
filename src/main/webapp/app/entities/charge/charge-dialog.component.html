@@ -13,28 +13,17 @@
                    [(ngModel)]="charge.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_description">Description</label>
-            <input type="text" class="form-control" name="description" id="field_description"
-                [(ngModel)]="charge.description" required />
-            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.description?.errors?.required">
-                   This field is required.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" for="field_chargeType">Charge Type</label>
-            <select class="form-control" name="chargeType" [(ngModel)]="charge.chargeType" id="field_chargeType"  required>
-                <option value="FLAT_FEE">FLAT_FEE</option>
-                <option value="PERCENTAGE">PERCENTAGE</option>
+            <label class="form-control-label" for="field_institution">Institution</label>
+            <select class="form-control" id="field_institution" name="institution" [(ngModel)]="charge.institutionId"  required>
+                <option *ngIf="!editForm.value.institution" [ngValue]="null" selected></option>
+                <option [ngValue]="institutionOption.id" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
             </select>
-            <div [hidden]="!(editForm.controls.chargeType?.dirty && editForm.controls.chargeType?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.chargeType?.errors?.required">
-                   This field is required.
-                </small>
-            </div>
+        </div>
+        <div [hidden]="!(editForm.controls.institution?.dirty && editForm.controls.institution?.invalid)">
+            <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.institution?.errors?.required">
+                This field is required.
+            </small>
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_operationType">Operation Type</label>
@@ -47,8 +36,27 @@
             </select>
             <div [hidden]="!(editForm.controls.operationType?.dirty && editForm.controls.operationType?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.operationType?.errors?.required">
-                   This field is required.
+                       [hidden]="!editForm.controls.operationType?.errors?.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_asset">Asset</label>
+            <select class="form-control" id="field_asset" multiple name="asset" [(ngModel)]="charge.assets">
+                <option [ngValue]="getSelected(charge.assets, assetOption)" *ngFor="let assetOption of assets; trackBy: trackAssetById">{{assetOption.code}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_chargeType">Charge Type</label>
+            <select class="form-control" name="chargeType" [(ngModel)]="charge.chargeType" id="field_chargeType"  required>
+                <option value="FLAT_FEE">FLAT_FEE</option>
+                <option value="PERCENTAGE">PERCENTAGE</option>
+            </select>
+            <div [hidden]="!(editForm.controls.chargeType?.dirty && editForm.controls.chargeType?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.chargeType?.errors?.required">
+                    This field is required.
                 </small>
             </div>
         </div>
@@ -67,25 +75,16 @@
                 </small>
             </div>
         </div>
-
         <div class="form-group">
-            <label class="form-control-label" for="field_institution">Institution</label>
-            <select class="form-control" id="field_institution" name="institution" [(ngModel)]="charge.institutionId"  required>
-                <option *ngIf="!editForm.value.institution" [ngValue]="null" selected></option>
-                <option [ngValue]="institutionOption.id" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
-            </select>
-        </div>
-        <div [hidden]="!(editForm.controls.institution?.dirty && editForm.controls.institution?.invalid)">
-            <small class="form-text text-danger"
-                [hidden]="!editForm.controls.institution?.errors?.required">
-                This field is required.
-            </small>
-        </div>
-        <div class="form-group">
-            <label for="field_asset">Asset</label>
-            <select class="form-control" id="field_asset" multiple name="asset" [(ngModel)]="charge.assets">
-                <option [ngValue]="getSelected(charge.assets, assetOption)" *ngFor="let assetOption of assets; trackBy: trackAssetById">{{assetOption.code}}</option>
-            </select>
+            <label class="form-control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                   [(ngModel)]="charge.description" required />
+            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.description?.errors?.required">
+                    This field is required.
+                </small>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

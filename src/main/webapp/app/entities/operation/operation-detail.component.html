@@ -8,13 +8,11 @@
         <dd>
             <span>{{operation.executedAt | date:'medium'}}</span>
         </dd>
-        <dt><span>Amount From</span></dt>
+        <dt><span>Institution From</span></dt>
         <dd>
-            <span>{{operation.amountFrom}}</span>
-        </dd>
-        <dt><span>Amount To</span></dt>
-        <dd>
-            <span>{{operation.amountTo}}</span>
+            <div *ngIf="operation.institutionFromId">
+                <a [routerLink]="['/institution', operation.institutionFromId]">{{operation.institutionFromDescription}}</a>
+            </div>
         </dd>
         <dt><span>Position From</span></dt>
         <dd>
@@ -22,10 +20,14 @@
                 <a [routerLink]="['/position', operation.positionFromId]">{{operation.positionFromDescription}}</a>
             </div>
         </dd>
-        <dt><span>Institution From</span></dt>
+        <dt><span>Amount From</span></dt>
         <dd>
-            <div *ngIf="operation.institutionFromId">
-                <a [routerLink]="['/institution', operation.institutionFromId]">{{operation.institutionFromDescription}}</a>
+            <span>{{operation.amountFrom}}</span>
+        </dd>
+        <dt><span>Institution To</span></dt>
+        <dd>
+            <div *ngIf="operation.institutionToId">
+                <a [routerLink]="['/institution', operation.institutionToId]">{{operation.institutionToDescription}}</a>
             </div>
         </dd>
         <dt><span>Position To</span></dt>
@@ -34,11 +36,9 @@
                 <a [routerLink]="['/position', operation.positionToId]">{{operation.positionToDescription}}</a>
             </div>
         </dd>
-        <dt><span>Institution To</span></dt>
+        <dt><span>Amount To</span></dt>
         <dd>
-            <div *ngIf="operation.institutionToId">
-                <a [routerLink]="['/institution', operation.institutionToId]">{{operation.institutionToDescription}}</a>
-            </div>
+            <span>{{operation.amountTo}}</span>
         </dd>
     </dl>
 

@@ -12,17 +12,6 @@
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="accounts.id" readonly />
         </div>
-        <div class="form-group">
-            <label class="form-control-label" for="field_description">Description</label>
-            <input type="text" class="form-control" name="description" id="field_description"
-                [(ngModel)]="accounts.description" required />
-            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.description?.errors?.required">
-                   This field is required.
-                </small>
-            </div>
-        </div>
 
         <div class="form-group">
             <label class="form-control-label" for="field_portfolio">Portfolio</label>
@@ -60,6 +49,17 @@
                 [hidden]="!editForm.controls.institutions?.errors?.required">
                 This field is required.
             </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                   [(ngModel)]="accounts.description" required />
+            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.description?.errors?.required">
+                    This field is required.
+                </small>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

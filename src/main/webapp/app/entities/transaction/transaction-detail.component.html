@@ -12,18 +12,6 @@
         <dd>
             <span>{{transaction.description}}</span>
         </dd>
-        <dt><span>Amount</span></dt>
-        <dd>
-            <span>{{transaction.amount}}</span>
-        </dd>
-        <dt><span>Type</span></dt>
-        <dd>
-            <span>{{transaction.type}}</span>
-        </dd>
-        <dt><span>Balance</span></dt>
-        <dd>
-            <span>{{transaction.balance}}</span>
-        </dd>
         <dt><span>Operation</span></dt>
         <dd>
             <div *ngIf="transaction.operationId">
@@ -35,6 +23,18 @@
             <div *ngIf="transaction.positionId">
                 <a [routerLink]="['/position', transaction.positionId]">{{transaction.positionDescription}}</a>
             </div>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+            <span>{{transaction.type}}</span>
+        </dd>
+        <dt><span>Amount</span></dt>
+        <dd>
+            <span>{{transaction.amount}}</span>
+        </dd>
+        <dt><span>Balance</span></dt>
+        <dd>
+            <span>{{transaction.balance}}</span>
         </dd>
     </dl>
 

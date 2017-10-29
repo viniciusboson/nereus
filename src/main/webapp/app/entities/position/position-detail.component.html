@@ -4,6 +4,22 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
+        <dt><span>Account</span></dt>
+        <dd>
+            <div *ngIf="position.accountId">
+                <a [routerLink]="['/accounts', position.accountId]">{{position.accountDescription}}</a>
+            </div>
+        </dd>
+        <dt><span>Asset</span></dt>
+        <dd>
+            <div *ngIf="position.assetId">
+                <a [routerLink]="['/asset', position.assetId]">{{position.assetCode}}</a>
+            </div>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+            <span>{{position.type}}</span>
+        </dd>
         <dt><span>Description</span></dt>
         <dd>
             <span>{{position.description}}</span>
@@ -12,25 +28,10 @@
         <dd>
             <span>{{position.balance}}</span>
         </dd>
-        <dt><span>Type</span></dt>
-        <dd>
-            <span>{{position.type}}</span>
-        </dd>
+
         <dt><span>Status</span></dt>
         <dd>
             <span>{{position.status}}</span>
-        </dd>
-        <dt><span>Asset</span></dt>
-        <dd>
-            <div *ngIf="position.assetId">
-                <a [routerLink]="['/asset', position.assetId]">{{position.assetCode}}</a>
-            </div>
-        </dd>
-        <dt><span>Account</span></dt>
-        <dd>
-            <div *ngIf="position.accountId">
-                <a [routerLink]="['/accounts', position.accountId]">{{position.accountDescription}}</a>
-            </div>
         </dd>
     </dl>
 

@@ -41,6 +41,45 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="form-control-label" for="field_operation">Operation</label>
+            <select class="form-control" id="field_operation" name="operation" [(ngModel)]="transaction.operationId"  required>
+                <option *ngIf="!editForm.value.operation" [ngValue]="null" selected></option>
+                <option [ngValue]="operationOption.id" *ngFor="let operationOption of operations; trackBy: trackOperationById">{{operationOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.operation?.dirty && editForm.controls.operation?.invalid)">
+            <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.operation?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_position">Position</label>
+            <select class="form-control" id="field_position" name="position" [(ngModel)]="transaction.positionId"  required>
+                <option *ngIf="!editForm.value.position" [ngValue]="null" selected></option>
+                <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.position?.dirty && editForm.controls.position?.invalid)">
+            <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.position?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_type">Type</label>
+            <select class="form-control" name="type" [(ngModel)]="transaction.type" id="field_type"  required>
+                <option value="DEBIT">DEBIT</option>
+                <option value="CREDIT">CREDIT</option>
+            </select>
+            <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.type?.errors?.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" for="field_amount">Amount</label>
             <input type="number" class="form-control" name="amount" id="field_amount"
                 [(ngModel)]="transaction.amount" required />
@@ -52,19 +91,6 @@
                 <small class="form-text text-danger"
                     [hidden]="!editForm.controls.amount?.errors?.number">
                     This field should be a number.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" for="field_type">Type</label>
-            <select class="form-control" name="type" [(ngModel)]="transaction.type" id="field_type"  required>
-                <option value="DEBIT">DEBIT</option>
-                <option value="CREDIT">CREDIT</option>
-            </select>
-            <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.type?.errors?.required">
-                   This field is required.
                 </small>
             </div>
         </div>
@@ -82,33 +108,6 @@
                     This field should be a number.
                 </small>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label class="form-control-label" for="field_operation">Operation</label>
-            <select class="form-control" id="field_operation" name="operation" [(ngModel)]="transaction.operationId"  required>
-                <option *ngIf="!editForm.value.operation" [ngValue]="null" selected></option>
-                <option [ngValue]="operationOption.id" *ngFor="let operationOption of operations; trackBy: trackOperationById">{{operationOption.id}}</option>
-            </select>
-        </div>
-        <div [hidden]="!(editForm.controls.operation?.dirty && editForm.controls.operation?.invalid)">
-            <small class="form-text text-danger"
-                [hidden]="!editForm.controls.operation?.errors?.required">
-                This field is required.
-            </small>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" for="field_position">Position</label>
-            <select class="form-control" id="field_position" name="position" [(ngModel)]="transaction.positionId"  required>
-                <option *ngIf="!editForm.value.position" [ngValue]="null" selected></option>
-                <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
-            </select>
-        </div>
-        <div [hidden]="!(editForm.controls.position?.dirty && editForm.controls.position?.invalid)">
-            <small class="form-text text-danger"
-                [hidden]="!editForm.controls.position?.errors?.required">
-                This field is required.
-            </small>
         </div>
     </div>
     <div class="modal-footer">

@@ -4,33 +4,33 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span>Description</span></dt>
-        <dd>
-            <span>{{charge.description}}</span>
-        </dd>
-        <dt><span>Charge Type</span></dt>
-        <dd>
-            <span>{{charge.chargeType}}</span>
-        </dd>
-        <dt><span>Operation Type</span></dt>
-        <dd>
-            <span>{{charge.operationType}}</span>
-        </dd>
-        <dt><span>Amount</span></dt>
-        <dd>
-            <span>{{charge.amount}}</span>
-        </dd>
         <dt><span>Institution</span></dt>
         <dd>
             <div *ngIf="charge.institutionId">
                 <a [routerLink]="['/institution', charge.institutionId]">{{charge.institutionDescription}}</a>
             </div>
         </dd>
+        <dt><span>Operation Type</span></dt>
+        <dd>
+            <span>{{charge.operationType}}</span>
+        </dd>
         <dt><span>Asset</span></dt>
         <dd>
             <span *ngFor="let asset of charge.assets; let last = last">
                 <a [routerLink]="['/asset', asset?.id ]">{{asset.code}}</a>{{last ? '' : ', '}}
             </span>
+        </dd>
+        <dt><span>Charge Type</span></dt>
+        <dd>
+        <span>{{charge.chargeType}}</span>
+        </dd>
+        <dt><span>Amount</span></dt>
+        <dd>
+        <span>{{charge.amount}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{charge.description}}</span>
         </dd>
     </dl>
 
