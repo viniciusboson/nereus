@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { JhiDateUtils } from 'ng-jhipster';
-
 import { PositionMetric } from './position-metric.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
@@ -12,7 +10,7 @@ export class PositionMetricService {
 
     private resourceUrl = '/doris/api/position-metrics';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http) { }
 
     create(positionMetric: PositionMetric): Observable<PositionMetric> {
         const copy = this.convert(positionMetric);
@@ -61,10 +59,6 @@ export class PositionMetricService {
      */
     private convertItemFromServer(json: any): PositionMetric {
         const entity: PositionMetric = Object.assign(new PositionMetric(), json);
-        entity.createdAt = this.dateUtils
-            .convertDateTimeFromServer(json.createdAt);
-        entity.updatedAt = this.dateUtils
-            .convertDateTimeFromServer(json.updatedAt);
         return entity;
     }
 
@@ -73,10 +67,6 @@ export class PositionMetricService {
      */
     private convert(positionMetric: PositionMetric): PositionMetric {
         const copy: PositionMetric = Object.assign({}, positionMetric);
-
-        copy.createdAt = this.dateUtils.toDate(positionMetric.createdAt);
-
-        copy.updatedAt = this.dateUtils.toDate(positionMetric.updatedAt);
         return copy;
     }
 }

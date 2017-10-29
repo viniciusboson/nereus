@@ -1,7 +1,6 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DatePipe } from '@angular/common';
 import { Asset } from './asset.model';
 import { AssetService } from './asset.service';
 
@@ -10,7 +9,6 @@ export class AssetPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
-        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private assetService: AssetService
@@ -28,10 +26,6 @@ export class AssetPopupService {
 
             if (id) {
                 this.assetService.find(id).subscribe((asset) => {
-                    asset.createdAt = this.datePipe
-                        .transform(asset.createdAt, 'yyyy-MM-ddTHH:mm:ss');
-                    asset.updatedAt = this.datePipe
-                        .transform(asset.updatedAt, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.assetModalRef(component, asset);
                     resolve(this.ngbModalRef);
                 });

@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { JhiDateUtils } from 'ng-jhipster';
-
 import { Position } from './position.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
@@ -12,7 +10,7 @@ export class PositionService {
 
     private resourceUrl = '/doris/api/positions';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http) { }
 
     create(position: Position): Observable<Position> {
         const copy = this.convert(position);
@@ -61,10 +59,6 @@ export class PositionService {
      */
     private convertItemFromServer(json: any): Position {
         const entity: Position = Object.assign(new Position(), json);
-        entity.createdAt = this.dateUtils
-            .convertDateTimeFromServer(json.createdAt);
-        entity.updatedAt = this.dateUtils
-            .convertDateTimeFromServer(json.updatedAt);
         return entity;
     }
 
@@ -73,10 +67,6 @@ export class PositionService {
      */
     private convert(position: Position): Position {
         const copy: Position = Object.assign({}, position);
-
-        copy.createdAt = this.dateUtils.toDate(position.createdAt);
-
-        copy.updatedAt = this.dateUtils.toDate(position.updatedAt);
         return copy;
     }
 }

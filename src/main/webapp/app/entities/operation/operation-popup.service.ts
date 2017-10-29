@@ -28,10 +28,6 @@ export class OperationPopupService {
 
             if (id) {
                 this.operationService.find(id).subscribe((operation) => {
-                    operation.createdAt = this.datePipe
-                        .transform(operation.createdAt, 'yyyy-MM-ddTHH:mm:ss');
-                    operation.updatedAt = this.datePipe
-                        .transform(operation.updatedAt, 'yyyy-MM-ddTHH:mm:ss');
                     operation.executedAt = this.datePipe
                         .transform(operation.executedAt, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.operationModalRef(component, operation);

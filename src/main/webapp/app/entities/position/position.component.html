@@ -17,9 +17,6 @@
             <thead>
             <tr>
             <th><span>ID</span></th>
-            <th><span>Created At</span></th>
-            <th><span>Updated At</span></th>
-            <th><span>Modified By</span></th>
             <th><span>Description</span></th>
             <th><span>Balance</span></th>
             <th><span>Type</span></th>
@@ -32,9 +29,6 @@
             <tbody>
             <tr *ngFor="let position of positions ;trackBy: trackId">
                 <td><a [routerLink]="['../position', position.id ]">{{position.id}}</a></td>
-                <td>{{position.createdAt | date:'medium'}}</td>
-                <td>{{position.updatedAt | date:'medium'}}</td>
-                <td>{{position.modifiedBy}}</td>
                 <td>{{position.description}}</td>
                 <td>{{position.balance}}</td>
                 <td>{{position.type}}</td>

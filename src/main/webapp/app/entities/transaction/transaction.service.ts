@@ -61,10 +61,6 @@ export class TransactionService {
      */
     private convertItemFromServer(json: any): Transaction {
         const entity: Transaction = Object.assign(new Transaction(), json);
-        entity.createdAt = this.dateUtils
-            .convertDateTimeFromServer(json.createdAt);
-        entity.updatedAt = this.dateUtils
-            .convertDateTimeFromServer(json.updatedAt);
         entity.executedAt = this.dateUtils
             .convertDateTimeFromServer(json.executedAt);
         return entity;
@@ -75,10 +71,6 @@ export class TransactionService {
      */
     private convert(transaction: Transaction): Transaction {
         const copy: Transaction = Object.assign({}, transaction);
-
-        copy.createdAt = this.dateUtils.toDate(transaction.createdAt);
-
-        copy.updatedAt = this.dateUtils.toDate(transaction.updatedAt);
 
         copy.executedAt = this.dateUtils.toDate(transaction.executedAt);
         return copy;

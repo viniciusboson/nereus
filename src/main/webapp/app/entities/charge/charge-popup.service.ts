@@ -1,7 +1,6 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DatePipe } from '@angular/common';
 import { Charge } from './charge.model';
 import { ChargeService } from './charge.service';
 
@@ -10,7 +9,6 @@ export class ChargePopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
-        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private chargeService: ChargeService
@@ -28,10 +26,6 @@ export class ChargePopupService {
 
             if (id) {
                 this.chargeService.find(id).subscribe((charge) => {
-                    charge.createdAt = this.datePipe
-                        .transform(charge.createdAt, 'yyyy-MM-ddTHH:mm:ss');
-                    charge.updatedAt = this.datePipe
-                        .transform(charge.updatedAt, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.chargeModalRef(component, charge);
                     resolve(this.ngbModalRef);
                 });

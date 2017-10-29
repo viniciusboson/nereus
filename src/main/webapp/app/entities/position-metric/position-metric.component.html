@@ -17,9 +17,6 @@
             <thead>
             <tr>
             <th><span>ID</span></th>
-            <th><span>Created At</span></th>
-            <th><span>Updated At</span></th>
-            <th><span>Modified By</span></th>
             <th><span>Entry Avg Price</span></th>
             <th><span>Entry Amount</span></th>
             <th><span>Exit Avg Price</span></th>
@@ -33,9 +30,6 @@
             <tbody>
             <tr *ngFor="let positionMetric of positionMetrics ;trackBy: trackId">
                 <td><a [routerLink]="['../position-metric', positionMetric.id ]">{{positionMetric.id}}</a></td>
-                <td>{{positionMetric.createdAt | date:'medium'}}</td>
-                <td>{{positionMetric.updatedAt | date:'medium'}}</td>
-                <td>{{positionMetric.modifiedBy}}</td>
                 <td>{{positionMetric.entryAvgPrice}}</td>
                 <td>{{positionMetric.entryAmount}}</td>
                 <td>{{positionMetric.exitAvgPrice}}</td>

@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { JhiDateUtils } from 'ng-jhipster';
-
 import { Institution } from './institution.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
@@ -12,7 +10,7 @@ export class InstitutionService {
 
     private resourceUrl = '/doris/api/institutions';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http) { }
 
     create(institution: Institution): Observable<Institution> {
         const copy = this.convert(institution);
@@ -61,10 +59,6 @@ export class InstitutionService {
      */
     private convertItemFromServer(json: any): Institution {
         const entity: Institution = Object.assign(new Institution(), json);
-        entity.createdAt = this.dateUtils
-            .convertDateTimeFromServer(json.createdAt);
-        entity.updatedAt = this.dateUtils
-            .convertDateTimeFromServer(json.updatedAt);
         return entity;
     }
 
@@ -73,10 +67,6 @@ export class InstitutionService {
      */
     private convert(institution: Institution): Institution {
         const copy: Institution = Object.assign({}, institution);
-
-        copy.createdAt = this.dateUtils.toDate(institution.createdAt);
-
-        copy.updatedAt = this.dateUtils.toDate(institution.updatedAt);
         return copy;
     }
 }

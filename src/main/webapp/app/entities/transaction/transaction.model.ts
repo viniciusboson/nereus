@@ -8,9 +8,6 @@ export const enum TransactionType {
 export class Transaction implements BaseEntity {
     constructor(
         public id?: number,
-        public createdAt?: any,
-        public updatedAt?: any,
-        public modifiedBy?: string,
         public executedAt?: any,
         public description?: string,
         public amount?: number,

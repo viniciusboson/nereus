@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { JhiDateUtils } from 'ng-jhipster';
-
 import { Accounts } from './accounts.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
@@ -12,7 +10,7 @@ export class AccountsService {
 
     private resourceUrl = '/doris/api/accounts';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http) { }
 
     create(accounts: Accounts): Observable<Accounts> {
         const copy = this.convert(accounts);
@@ -61,10 +59,6 @@ export class AccountsService {
      */
     private convertItemFromServer(json: any): Accounts {
         const entity: Accounts = Object.assign(new Accounts(), json);
-        entity.createdAt = this.dateUtils
-            .convertDateTimeFromServer(json.createdAt);
-        entity.updatedAt = this.dateUtils
-            .convertDateTimeFromServer(json.updatedAt);
         return entity;
     }
 
@@ -73,10 +67,6 @@ export class AccountsService {
      */
     private convert(accounts: Accounts): Accounts {
         const copy: Accounts = Object.assign({}, accounts);
-
-        copy.createdAt = this.dateUtils.toDate(accounts.createdAt);
-
-        copy.updatedAt = this.dateUtils.toDate(accounts.updatedAt);
         return copy;
     }
 }

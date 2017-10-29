@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { JhiDateUtils } from 'ng-jhipster';
-
 import { Asset } from './asset.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
@@ -12,7 +10,7 @@ export class AssetService {
 
     private resourceUrl = '/doris/api/assets';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http) { }
 
     create(asset: Asset): Observable<Asset> {
         const copy = this.convert(asset);
@@ -61,10 +59,6 @@ export class AssetService {
      */
     private convertItemFromServer(json: any): Asset {
         const entity: Asset = Object.assign(new Asset(), json);
-        entity.createdAt = this.dateUtils
-            .convertDateTimeFromServer(json.createdAt);
-        entity.updatedAt = this.dateUtils
-            .convertDateTimeFromServer(json.updatedAt);
         return entity;
     }
 
@@ -73,10 +67,6 @@ export class AssetService {
      */
     private convert(asset: Asset): Asset {
         const copy: Asset = Object.assign({}, asset);
-
-        copy.createdAt = this.dateUtils.toDate(asset.createdAt);
-
-        copy.updatedAt = this.dateUtils.toDate(asset.updatedAt);
         return copy;
     }
 }

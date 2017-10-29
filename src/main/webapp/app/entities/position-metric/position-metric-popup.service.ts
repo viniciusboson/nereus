@@ -1,7 +1,6 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DatePipe } from '@angular/common';
 import { PositionMetric } from './position-metric.model';
 import { PositionMetricService } from './position-metric.service';
 
@@ -10,7 +9,6 @@ export class PositionMetricPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
-        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private positionMetricService: PositionMetricService
@@ -28,10 +26,6 @@ export class PositionMetricPopupService {
 
             if (id) {
                 this.positionMetricService.find(id).subscribe((positionMetric) => {
-                    positionMetric.createdAt = this.datePipe
-                        .transform(positionMetric.createdAt, 'yyyy-MM-ddTHH:mm:ss');
-                    positionMetric.updatedAt = this.datePipe
-                        .transform(positionMetric.updatedAt, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.positionMetricModalRef(component, positionMetric);
                     resolve(this.ngbModalRef);
                 });

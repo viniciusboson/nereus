@@ -61,10 +61,6 @@ export class OperationService {
      */
     private convertItemFromServer(json: any): Operation {
         const entity: Operation = Object.assign(new Operation(), json);
-        entity.createdAt = this.dateUtils
-            .convertDateTimeFromServer(json.createdAt);
-        entity.updatedAt = this.dateUtils
-            .convertDateTimeFromServer(json.updatedAt);
         entity.executedAt = this.dateUtils
             .convertDateTimeFromServer(json.executedAt);
         return entity;
@@ -75,10 +71,6 @@ export class OperationService {
      */
     private convert(operation: Operation): Operation {
         const copy: Operation = Object.assign({}, operation);
-
-        copy.createdAt = this.dateUtils.toDate(operation.createdAt);
-
-        copy.updatedAt = this.dateUtils.toDate(operation.updatedAt);
 
         copy.executedAt = this.dateUtils.toDate(operation.executedAt);
         return copy;

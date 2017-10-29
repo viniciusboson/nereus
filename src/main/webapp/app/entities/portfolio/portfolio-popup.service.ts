@@ -1,7 +1,6 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DatePipe } from '@angular/common';
 import { Portfolio } from './portfolio.model';
 import { PortfolioService } from './portfolio.service';
 
@@ -10,7 +9,6 @@ export class PortfolioPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
-        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private portfolioService: PortfolioService
@@ -28,10 +26,6 @@ export class PortfolioPopupService {
 
             if (id) {
                 this.portfolioService.find(id).subscribe((portfolio) => {
-                    portfolio.createdAt = this.datePipe
-                        .transform(portfolio.createdAt, 'yyyy-MM-ddTHH:mm:ss');
-                    portfolio.updatedAt = this.datePipe
-                        .transform(portfolio.updatedAt, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.portfolioModalRef(component, portfolio);
                     resolve(this.ngbModalRef);
                 });

@@ -17,9 +17,6 @@
             <thead>
             <tr>
             <th><span>ID</span></th>
-            <th><span>Created At</span></th>
-            <th><span>Updated At</span></th>
-            <th><span>Modified By</span></th>
             <th><span>Description</span></th>
             <th><span>Charge Type</span></th>
             <th><span>Operation Type</span></th>
@@ -32,9 +29,6 @@
             <tbody>
             <tr *ngFor="let charge of charges ;trackBy: trackId">
                 <td><a [routerLink]="['../charge', charge.id ]">{{charge.id}}</a></td>
-                <td>{{charge.createdAt | date:'medium'}}</td>
-                <td>{{charge.updatedAt | date:'medium'}}</td>
-                <td>{{charge.modifiedBy}}</td>
                 <td>{{charge.description}}</td>
                 <td>{{charge.chargeType}}</td>
                 <td>{{charge.operationType}}</td>

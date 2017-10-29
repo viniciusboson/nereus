@@ -17,9 +17,6 @@
             <thead>
             <tr>
             <th><span>ID</span></th>
-            <th><span>Created At</span></th>
-            <th><span>Updated At</span></th>
-            <th><span>Modified By</span></th>
             <th><span>Description</span></th>
             <th><span>Portfolio</span></th>
             <th><span>Assets</span></th>
@@ -30,9 +27,6 @@
             <tbody>
             <tr *ngFor="let accounts of accounts ;trackBy: trackId">
                 <td><a [routerLink]="['../accounts', accounts.id ]">{{accounts.id}}</a></td>
-                <td>{{accounts.createdAt | date:'medium'}}</td>
-                <td>{{accounts.updatedAt | date:'medium'}}</td>
-                <td>{{accounts.modifiedBy}}</td>
                 <td>{{accounts.description}}</td>
                 <td>
                     <div *ngIf="accounts.portfolioId">

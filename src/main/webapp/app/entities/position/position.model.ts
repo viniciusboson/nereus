@@ -14,9 +14,6 @@ export const enum PositionStatus {
 export class Position implements BaseEntity {
     constructor(
         public id?: number,
-        public createdAt?: any,
-        public updatedAt?: any,
-        public modifiedBy?: string,
         public description?: string,
         public balance?: number,
         public type?: PositionType,

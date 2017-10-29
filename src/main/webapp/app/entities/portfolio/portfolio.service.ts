@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { JhiDateUtils } from 'ng-jhipster';
-
 import { Portfolio } from './portfolio.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
@@ -12,7 +10,7 @@ export class PortfolioService {
 
     private resourceUrl = '/doris/api/portfolios';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http) { }
 
     create(portfolio: Portfolio): Observable<Portfolio> {
         const copy = this.convert(portfolio);
@@ -61,10 +59,6 @@ export class PortfolioService {
      */
     private convertItemFromServer(json: any): Portfolio {
         const entity: Portfolio = Object.assign(new Portfolio(), json);
-        entity.createdAt = this.dateUtils
-            .convertDateTimeFromServer(json.createdAt);
-        entity.updatedAt = this.dateUtils
-            .convertDateTimeFromServer(json.updatedAt);
         return entity;
     }
 
@@ -73,10 +67,6 @@ export class PortfolioService {
      */
     private convert(portfolio: Portfolio): Portfolio {
         const copy: Portfolio = Object.assign({}, portfolio);
-
-        copy.createdAt = this.dateUtils.toDate(portfolio.createdAt);
-
-        copy.updatedAt = this.dateUtils.toDate(portfolio.updatedAt);
         return copy;
     }
 }

@@ -1,7 +1,6 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DatePipe } from '@angular/common';
 import { Institution } from './institution.model';
 import { InstitutionService } from './institution.service';
 
@@ -10,7 +9,6 @@ export class InstitutionPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
-        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private institutionService: InstitutionService
@@ -28,10 +26,6 @@ export class InstitutionPopupService {
 
             if (id) {
                 this.institutionService.find(id).subscribe((institution) => {
-                    institution.createdAt = this.datePipe
-                        .transform(institution.createdAt, 'yyyy-MM-ddTHH:mm:ss');
-                    institution.updatedAt = this.datePipe
-                        .transform(institution.updatedAt, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.institutionModalRef(component, institution);
                     resolve(this.ngbModalRef);
                 });

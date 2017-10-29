@@ -16,9 +16,6 @@ export const enum OperationType {
 export class Charge implements BaseEntity {
     constructor(
         public id?: number,
-        public createdAt?: any,
-        public updatedAt?: any,
-        public modifiedBy?: string,
         public description?: string,
         public chargeType?: ChargeType,
         public operationType?: OperationType,
