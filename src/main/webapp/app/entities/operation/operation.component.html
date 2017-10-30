@@ -31,6 +31,7 @@
             <tr *ngFor="let operation of operations ;trackBy: trackId">
                 <td><a [routerLink]="['../operation', operation.id ]">{{operation.id}}</a></td>
                 <td>{{operation.executedAt | date:'medium'}}</td>
+                <td>{{operation.operationType}}</td>
                 <td>
                     <div *ngIf="operation.institutionFromId">
                         <a [routerLink]="['../institution', operation.institutionFromId  ]" >{{operation.institutionFromDescription}}</a>

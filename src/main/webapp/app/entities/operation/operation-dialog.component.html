@@ -30,6 +30,22 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="form-control-label" for="field_operationType">Operation Type</label>
+            <select class="form-control" name="operationType" [(ngModel)]="operation.operationType" id="field_operationType"  required>
+                <option value="WIRE_TRANSFER">WIRE_TRANSFER</option>
+                <option value="WITHDRAW">WITHDRAW</option>
+                <option value="DEPOSIT">DEPOSIT</option>
+                <option value="BUY">BUY</option>
+                <option value="SELL">SELL</option>
+            </select>
+            <div [hidden]="!(editForm.controls.operationType?.dirty && editForm.controls.operationType?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.operationType?.errors?.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" for="field_institutionFrom">Institution From</label>
             <select class="form-control" id="field_institutionFrom" name="institutionFrom" [(ngModel)]="operation.institutionFromId"  required>
                 <option *ngIf="!editForm.value.institutionFrom" [ngValue]="null" selected></option>

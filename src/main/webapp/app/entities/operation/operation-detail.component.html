@@ -8,6 +8,10 @@
         <dd>
             <span>{{operation.executedAt | date:'medium'}}</span>
         </dd>
+        <dt><span>Operation Type</span></dt>
+        <dd>
+            <span>{{operation.operationType}}</span>
+        </dd>
         <dt><span>Institution From</span></dt>
         <dd>
             <div *ngIf="operation.institutionFromId">
