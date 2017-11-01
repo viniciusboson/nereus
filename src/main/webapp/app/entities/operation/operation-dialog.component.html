@@ -30,17 +30,17 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_operationType">Operation Type</label>
-            <select class="form-control" name="operationType" [(ngModel)]="operation.operationType" id="field_operationType"  required>
+            <label class="form-control-label" for="field_operationTypeFrom">Operation Type From</label>
+            <select class="form-control" name="operationTypeFrom" [(ngModel)]="operation.operationTypeFrom" id="field_operationTypeFrom"  required>
                 <option value="WIRE_TRANSFER">WIRE_TRANSFER</option>
                 <option value="WITHDRAW">WITHDRAW</option>
                 <option value="DEPOSIT">DEPOSIT</option>
                 <option value="BUY">BUY</option>
                 <option value="SELL">SELL</option>
             </select>
-            <div [hidden]="!(editForm.controls.operationType?.dirty && editForm.controls.operationType?.invalid)">
+            <div [hidden]="!(editForm.controls.operationTypeFrom?.dirty && editForm.controls.operationTypeFrom?.invalid)">
                 <small class="form-text text-danger"
-                       [hidden]="!editForm.controls.operationType?.errors?.required">
+                       [hidden]="!editForm.controls.operationTypeFrom?.errors?.required">
                     This field is required.
                 </small>
             </div>
@@ -83,6 +83,22 @@
                 <small class="form-text text-danger"
                     [hidden]="!editForm.controls.amountFrom?.errors?.number">
                     This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_operationTypeTo">Operation Type To</label>
+            <select class="form-control" name="operationTypeTo" [(ngModel)]="operation.operationTypeTo" id="field_operationTypeTo"  required>
+                <option value="WIRE_TRANSFER">WIRE_TRANSFER</option>
+                <option value="WITHDRAW">WITHDRAW</option>
+                <option value="DEPOSIT">DEPOSIT</option>
+                <option value="BUY">BUY</option>
+                <option value="SELL">SELL</option>
+            </select>
+            <div [hidden]="!(editForm.controls.operationTypeTo?.dirty && editForm.controls.operationTypeTo?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.operationTypeTo?.errors?.required">
+                    This field is required.
                 </small>
             </div>
         </div>
