@@ -19,6 +19,7 @@
             <th><span>ID</span></th>
             <th><span>Institution</span></th>
             <th><span>Operation Type</span></th>
+            <th><span>Target</span></th>
             <th><span>Asset</span></th>
             <th><span>Charge Type</span></th>
             <th><span>Amount</span></th>
@@ -35,6 +36,7 @@
                     </div>
                 </td>
                 <td>{{charge.operationType}}</td>
+                <td>{{charge.target}}</td>
                 <td>
                     <span *ngFor="let asset of charge.assets; let last = last">
                             <a class="form-control-static" [routerLink]="['../asset', asset?.id ]">{{asset.code}}</a>{{last ? '' : ', '}}

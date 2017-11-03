@@ -47,6 +47,14 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "target",
+            "fieldType": "ChargeTarget",
+            "fieldValues": "SENDER,RECEIVER,BOTH",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20171024173016",

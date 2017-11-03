@@ -13,6 +13,12 @@ export const enum OperationType {
     'SELL'
 }
 
+export const enum ChargeTarget {
+    'SENDER',
+    'RECEIVER',
+    'BOTH'
+}
+
 export class Charge implements BaseEntity {
     constructor(
         public id?: number,
@@ -20,6 +26,7 @@ export class Charge implements BaseEntity {
         public chargeType?: ChargeType,
         public operationType?: OperationType,
         public amount?: number,
+        public target?: ChargeTarget,
         public institutionId?: number,
         public assets?: BaseEntity[],
     ) {

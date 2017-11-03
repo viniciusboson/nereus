@@ -21,10 +21,15 @@ entity Charge {
   chargeType ChargeType required
   operationType OperationType required
   amount Double required
+  target ChargeTarget required
 }
 
 enum ChargeType {
   FLAT_FEE, PERCENTAGE
+}
+
+enum ChargeTarget {
+  ORIGIN, DESTINATION, BOTH
 }
 
 relationship ManyToOne {
@@ -80,7 +85,8 @@ entity Operation {
   executedAt ZonedDateTime required
   amountFrom Double required
   amountTo Double required
-  operationType OperationType required
+  operationTypeFrom OperationType required
+  operationTypeTo OperationType required
 }
 
 enum OperationType {
