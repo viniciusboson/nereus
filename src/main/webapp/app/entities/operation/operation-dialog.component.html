@@ -1,0 +1,156 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myOperationLabel">Create or edit a Operation</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!operation.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="operation.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_executedAt">Executed At</label>
+            <div class="d-flex">
+                <input id="field_executedAt" type="datetime-local" class="form-control" name="executedAt" [(ngModel)]="operation.executedAt"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.executedAt?.dirty && editForm.controls.executedAt?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.executedAt?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.executedAt?.errors?.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_amountFrom">Amount From</label>
+            <input type="number" class="form-control" name="amountFrom" id="field_amountFrom"
+                [(ngModel)]="operation.amountFrom" required />
+            <div [hidden]="!(editForm.controls.amountFrom?.dirty && editForm.controls.amountFrom?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.amountFrom?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.amountFrom?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_amountTo">Amount To</label>
+            <input type="number" class="form-control" name="amountTo" id="field_amountTo"
+                [(ngModel)]="operation.amountTo" required />
+            <div [hidden]="!(editForm.controls.amountTo?.dirty && editForm.controls.amountTo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.amountTo?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.amountTo?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_operationTypeFrom">Operation Type From</label>
+            <select class="form-control" name="operationTypeFrom" [(ngModel)]="operation.operationTypeFrom" id="field_operationTypeFrom"  required>
+                <option value="WIRE_TRANSFER">WIRE_TRANSFER</option>
+                <option value="WITHDRAW">WITHDRAW</option>
+                <option value="DEPOSIT">DEPOSIT</option>
+                <option value="BUY">BUY</option>
+                <option value="SELL">SELL</option>
+            </select>
+            <div [hidden]="!(editForm.controls.operationTypeFrom?.dirty && editForm.controls.operationTypeFrom?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.operationTypeFrom?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_operationTypeTo">Operation Type To</label>
+            <select class="form-control" name="operationTypeTo" [(ngModel)]="operation.operationTypeTo" id="field_operationTypeTo"  required>
+                <option value="WIRE_TRANSFER">WIRE_TRANSFER</option>
+                <option value="WITHDRAW">WITHDRAW</option>
+                <option value="DEPOSIT">DEPOSIT</option>
+                <option value="BUY">BUY</option>
+                <option value="SELL">SELL</option>
+            </select>
+            <div [hidden]="!(editForm.controls.operationTypeTo?.dirty && editForm.controls.operationTypeTo?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.operationTypeTo?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_positionFrom">Position From</label>
+            <select class="form-control" id="field_positionFrom" name="positionFrom" [(ngModel)]="operation.positionFromId"  required>
+                <option *ngIf="!editForm.value.positionFrom" [ngValue]="null" selected></option>
+                <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.positionFrom?.dirty && editForm.controls.positionFrom?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.positionFrom?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_institutionFrom">Institution From</label>
+            <select class="form-control" id="field_institutionFrom" name="institutionFrom" [(ngModel)]="operation.institutionFromId"  required>
+                <option *ngIf="!editForm.value.institutionFrom" [ngValue]="null" selected></option>
+                <option [ngValue]="institutionOption.id" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.institutionFrom?.dirty && editForm.controls.institutionFrom?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.institutionFrom?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_positionTo">Position To</label>
+            <select class="form-control" id="field_positionTo" name="positionTo" [(ngModel)]="operation.positionToId"  required>
+                <option *ngIf="!editForm.value.positionTo" [ngValue]="null" selected></option>
+                <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.positionTo?.dirty && editForm.controls.positionTo?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.positionTo?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_institutionTo">Institution To</label>
+            <select class="form-control" id="field_institutionTo" name="institutionTo" [(ngModel)]="operation.institutionToId"  required>
+                <option *ngIf="!editForm.value.institutionTo" [ngValue]="null" selected></option>
+                <option [ngValue]="institutionOption.id" *ngFor="let institutionOption of institutions; trackBy: trackInstitutionById">{{institutionOption.description}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.institutionTo?.dirty && editForm.controls.institutionTo?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.institutionTo?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

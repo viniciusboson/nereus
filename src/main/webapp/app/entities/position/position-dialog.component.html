@@ -1,0 +1,104 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPositionLabel">Create or edit a Position</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!position.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="position.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="position.description" required />
+            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.description?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_balance">Balance</label>
+            <input type="number" class="form-control" name="balance" id="field_balance"
+                [(ngModel)]="position.balance" required />
+            <div [hidden]="!(editForm.controls.balance?.dirty && editForm.controls.balance?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.balance?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.balance?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_type">Type</label>
+            <select class="form-control" name="type" [(ngModel)]="position.type" id="field_type"  required>
+                <option value="LONG">LONG</option>
+                <option value="SHORT">SHORT</option>
+                <option value="FLAT">FLAT</option>
+            </select>
+            <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.type?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="position.status" id="field_status"  required>
+                <option value="OPEN">OPEN</option>
+                <option value="CLOSED">CLOSED</option>
+            </select>
+            <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.status?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_asset">Asset</label>
+            <select class="form-control" id="field_asset" name="asset" [(ngModel)]="position.assetId"  required>
+                <option *ngIf="!editForm.value.asset" [ngValue]="null" selected></option>
+                <option [ngValue]="assetOption.id" *ngFor="let assetOption of assets; trackBy: trackAssetById">{{assetOption.code}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.asset?.dirty && editForm.controls.asset?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.asset?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_account">Account</label>
+            <select class="form-control" id="field_account" name="account" [(ngModel)]="position.accountId"  required>
+                <option *ngIf="!editForm.value.account" [ngValue]="null" selected></option>
+                <option [ngValue]="accountsOption.id" *ngFor="let accountsOption of accounts; trackBy: trackAccountsById">{{accountsOption.description}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.account?.dirty && editForm.controls.account?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.account?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,76 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPositionMetricLabel">Create or edit a Position Metric</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!positionMetric.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="positionMetric.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_entryAvgPrice">Entry Avg Price</label>
+            <input type="number" class="form-control" name="entryAvgPrice" id="field_entryAvgPrice"
+                [(ngModel)]="positionMetric.entryAvgPrice"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_entryAmount">Entry Amount</label>
+            <input type="number" class="form-control" name="entryAmount" id="field_entryAmount"
+                [(ngModel)]="positionMetric.entryAmount"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_exitAvgPrice">Exit Avg Price</label>
+            <input type="number" class="form-control" name="exitAvgPrice" id="field_exitAvgPrice"
+                [(ngModel)]="positionMetric.exitAvgPrice"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_exitAmount">Exit Amount</label>
+            <input type="number" class="form-control" name="exitAmount" id="field_exitAmount"
+                [(ngModel)]="positionMetric.exitAmount"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_txCosts">Tx Costs</label>
+            <input type="number" class="form-control" name="txCosts" id="field_txCosts"
+                [(ngModel)]="positionMetric.txCosts"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_position">Position</label>
+            <select class="form-control" id="field_position" name="position" [(ngModel)]="positionMetric.positionId"  required>
+                <option *ngIf="!editForm.value.position" [ngValue]="null" selected></option>
+                <option [ngValue]="positionOption.id" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.description}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.position?.dirty && editForm.controls.position?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.position?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_assetComparison">Asset Comparison</label>
+            <select class="form-control" id="field_assetComparison" name="assetComparison" [(ngModel)]="positionMetric.assetComparisonId"  required>
+                <option *ngIf="!editForm.value.assetComparison" [ngValue]="null" selected></option>
+                <option [ngValue]="assetOption.id" *ngFor="let assetOption of assets; trackBy: trackAssetById">{{assetOption.code}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.assetComparison?.dirty && editForm.controls.assetComparison?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.assetComparison?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

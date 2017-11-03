@@ -1,0 +1,49 @@
+
+<div *ngIf="position">
+    <h2><span>Position</span> {{position.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{position.description}}</span>
+        </dd>
+        <dt><span>Balance</span></dt>
+        <dd>
+            <span>{{position.balance}}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+            <span>{{position.type}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{position.status}}</span>
+        </dd>
+        <dt><span>Asset</span></dt>
+        <dd>
+            <div *ngIf="position.assetId">
+                <a [routerLink]="['/asset', position.assetId]">{{position.assetCode}}</a>
+            </div>
+        </dd>
+        <dt><span>Account</span></dt>
+        <dd>
+            <div *ngIf="position.accountId">
+                <a [routerLink]="['/accounts', position.accountId]">{{position.accountDescription}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'position/'+ position.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

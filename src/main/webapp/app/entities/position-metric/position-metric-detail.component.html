@@ -1,0 +1,53 @@
+
+<div *ngIf="positionMetric">
+    <h2><span>Position Metric</span> {{positionMetric.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Entry Avg Price</span></dt>
+        <dd>
+            <span>{{positionMetric.entryAvgPrice}}</span>
+        </dd>
+        <dt><span>Entry Amount</span></dt>
+        <dd>
+            <span>{{positionMetric.entryAmount}}</span>
+        </dd>
+        <dt><span>Exit Avg Price</span></dt>
+        <dd>
+            <span>{{positionMetric.exitAvgPrice}}</span>
+        </dd>
+        <dt><span>Exit Amount</span></dt>
+        <dd>
+            <span>{{positionMetric.exitAmount}}</span>
+        </dd>
+        <dt><span>Tx Costs</span></dt>
+        <dd>
+            <span>{{positionMetric.txCosts}}</span>
+        </dd>
+        <dt><span>Position</span></dt>
+        <dd>
+            <div *ngIf="positionMetric.positionId">
+                <a [routerLink]="['/position', positionMetric.positionId]">{{positionMetric.positionDescription}}</a>
+            </div>
+        </dd>
+        <dt><span>Asset Comparison</span></dt>
+        <dd>
+            <div *ngIf="positionMetric.assetComparisonId">
+                <a [routerLink]="['/asset', positionMetric.assetComparisonId]">{{positionMetric.assetComparisonCode}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'position-metric/'+ positionMetric.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
