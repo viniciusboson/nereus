@@ -3,7 +3,7 @@
     "promptValues": {
       "packageName": "com.oceanus.nereus"
     },
-    "jhipsterVersion": "4.10.1",
+    "jhipsterVersion": "4.10.2",
     "baseName": "nereus",
     "packageName": "com.oceanus.nereus",
     "packageFolder": "com/oceanus/nereus",
