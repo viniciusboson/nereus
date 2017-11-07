@@ -71,6 +71,7 @@
             <select class="form-control" name="type" [(ngModel)]="transaction.type" id="field_type"  required>
                 <option value="DEBIT">DEBIT</option>
                 <option value="CREDIT">CREDIT</option>
+                <option value="CHARGE">CHARGE</option>
             </select>
             <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
                 <small class="form-text text-danger"

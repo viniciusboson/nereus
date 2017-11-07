@@ -2,7 +2,8 @@ import { BaseEntity } from './../../shared';
 
 export const enum TransactionType {
     'DEBIT',
-    'CREDIT'
+    'CREDIT',
+    'CHARGE'
 }
 
 export class Transaction implements BaseEntity {
