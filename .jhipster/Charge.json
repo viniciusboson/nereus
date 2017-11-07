@@ -51,7 +51,7 @@
         {
             "fieldName": "target",
             "fieldType": "ChargeTarget",
-            "fieldValues": "SENDER,RECEIVER,BOTH",
+            "fieldValues": "ORIGIN,DESTINATION,BOTH",
             "fieldValidateRules": [
                 "required"
             ]
@@ -63,6 +63,5 @@
     "pagination": "no",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,
-    "microserviceName": "doris",
-    "enableEntityAudit": true
+    "microserviceName": "doris"
 }

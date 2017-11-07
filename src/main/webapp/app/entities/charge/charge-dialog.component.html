@@ -44,8 +44,8 @@
         <div class="form-group">
             <label class="form-control-label" for="field_target">Target</label>
             <select class="form-control" name="target" [(ngModel)]="charge.target" id="field_target"  required>
-                <option value="SENDER">SENDER</option>
-                <option value="RECEIVER">RECEIVER</option>
+                <option value="ORIGIN">ORIGIN</option>
+                <option value="DESTINATION">DESTINATION</option>
                 <option value="BOTH">BOTH</option>
             </select>
             <div [hidden]="!(editForm.controls.target?.dirty && editForm.controls.target?.invalid)">

@@ -14,8 +14,8 @@ export const enum OperationType {
 }
 
 export const enum ChargeTarget {
-    'SENDER',
-    'RECEIVER',
+    'ORIGIN',
+    'DESTINATION',
     'BOTH'
 }
 
